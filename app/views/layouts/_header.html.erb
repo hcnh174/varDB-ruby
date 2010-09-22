@@ -1,0 +1,28 @@
+<div id="head1">
+<!--<#if user.anonymous>-->
+<%= link_to "Login", 'login.html' %> |
+<%= link_to "New account", 'newuser.html' %> |
+<!-- else
+<a href="${webapp}/user.html">[${user.name}]</a> |
+-->
+<a href="#" onclick="Ext.ux.vardb.Cart.quickCart()">QuickCart</a> |
+<%= link_to "Explorer", 'explorer.html' %> | <!--, {:target="cart", :rel="nofollow"}-->
+<%= link_to "Help", 'help.html' %> |
+<%= link_to "Contact us", 'contact.html' %>
+<!--
+<%= link_to "Logout", 'logout.html' %>
+-->
+&nbsp;
+</div>
+
+<div id="head2">
+<a href="${webapp}homepage.html" title="About the logo: derived from Tolia et al. 2005 P. falciparum EBA-175 crystal structure"><img src="/images/vardb-banner-home.png" alt="varDB logo" width="600" height="100"/></a>
+<div id="version">${vardb.version}</div>
+</div>
+
+<div id="head3">
+	<div id="mainmenudiv"></div>
+	<form name="searchform" method="post" action="${webapp}/search/sequences.html" style="display:none">
+	<input type="hidden" name="query" value=""/>
+	</form>
+</div>

@@ -1,0 +1,26 @@
+/**********
+*
+* http://TDG-i.com TDG innovations, LLC
+* 03/03/2008, Jay Garcia, jgarcia@tdg-i.com
+* Column Views Menu Overrides.  
+* 
+* Purpose : Adds 'Show All Columns' to Columns menu, reducing # of clicks to show all.
+*           Adds 'Change View' Menu, which allows you to customize the views  according to the grid.gridViews property.
+*
+* Works with EXT 2.0+
+*
+* License :  Free to use, just please don't sell.  
+*            This was made for myself, my customers and the EXT Community.
+*
+* Waranty : None.  I can answer questions via email: jgarcia@tdg-i.com
+*
+**********/
+.tdgi-extgrid-colview-icon {
+    background-image:url(/static/colview/img/table_go.png);
+}
+.tdgi-extgrid-showall-icon {
+    background-image:url(/static/img/table_refresh.png);
+}
+.tdgi-extgrid-filterview-default {
+    background-image:url(/static/img/table_sort.png);
+}

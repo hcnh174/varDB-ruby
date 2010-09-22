@@ -28,3 +28,17 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+#for using MongoDB
+require 'mongo'
+gem 'mongo'
+gem 'bson'
+#gem 'bson_ext'
+
+# for using SASS for css generation
+gem "haml"
+
+
+
+
+

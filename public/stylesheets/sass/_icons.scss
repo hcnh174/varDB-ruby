@@ -1,0 +1,21 @@
+@mixin icon($image)
+{
+	background: url('../images/icons/#{$image}') no-repeat 0 0 !important;
+}
+
+.upload-icon {@include icon('fileupload.png');}
+.login-icon {@include icon('extjs-logindialog-locked.png');}
+.icon-info {@include icon('silk-information.png');}
+.icon-add {@include icon('silk-add.png');}
+.icon-delete {@include icon('silk-cross.png');}
+.icon-revolve {@include icon('silk-arrow_switch.png');}
+.icon-print {@include icon('silk-printer.png');}
+.icon-rss {@include icon('feed.png');}
+.icon-email {@include icon('email.png');}
+.icon-basket {@include icon('basket.png');}
+.icon-basket_put {@include icon('basket_put.png');}
+.icon-basket_remove {@include icon('basket_remove.png');}
+.icon-excel {@include icon('page_white_excel.png');}
+.icon-pdf {@include icon('page_white_acrobat.png');}
+.icon-user_comment {@include icon('user_comment.png');}
+.icon-chart_organisation {@include icon('chart_organisation.png');}

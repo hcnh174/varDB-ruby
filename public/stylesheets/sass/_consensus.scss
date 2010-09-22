@@ -1,0 +1,224 @@
+/** percent identity **********************************/
+
+.identity
+{
+	.p80 {background-color: rgb(100,100,255);}
+	.p60 {background-color: rgb(153,153,255);}
+	.p40 {background-color: rgb(204,204,255);}
+}
+
+/***************************************/
+
+.zappo
+{
+	.hydrophobic,
+	.I,
+	.L,
+	.V,
+	.A,
+	.M
+	 {background-color: #ffafaf;}
+	
+	.aromatic,
+	.F,
+	.W,
+	.Y
+	 {background-color: #ffc800;}
+	
+	.positive,
+	.K,
+	.R,
+	.H,
+	.D,
+	.E
+	 {background-color: #6464ff;}
+	
+	.negative
+	 {background-color: #ff0000;}
+	
+	.hydrophilic,
+	.S,
+	.T,
+	.N,
+	.Q
+	 {background-color: #00ff00;}
+	
+	.special,
+	.P,
+	.G
+	 {background-color: #ff00ff;}
+	
+	.cysteine,
+	.C
+	 {background-color: #ffff00;}
+}
+
+
+/***************************************/
+
+.hydrophobic
+{
+	.I {background-color: #ff0000;}
+	.V {background-color: #f60009;}
+	.L {background-color: #ea0015;}
+	.F {background-color: #cb0034;}
+	.C {background-color: #c2003d;}
+	.M {background-color: #b0004f;}
+	.A {background-color: #ad0052;}
+	.G {background-color: #6a0095;}
+	.X {background-color: #680097;}
+	.T {background-color: #61009e;}
+	.S {background-color: #5e00a1;}
+	.W {background-color: #5b00a4;}
+	.Y {background-color: #4f00b0;}
+	.P {background-color: #4600b9;}
+	.H {background-color: #1500ea;}
+	.E {background-color: #0c00f3;}
+	.Z {background-color: #0c00f3;}
+	.Q {background-color: #0c00f3;}
+	.D {background-color: #0c00f3;}
+	.B {background-color: #0c00f3;}
+	.N {background-color: #0c00f3;}
+	.K {background-color: #0000ff;}
+	.R {background-color: #0000ff;}
+}
+
+.helix
+{
+	.helix .E {background-color: #ff00ff;}
+	.helix .M {background-color: #ef10ef;}
+	.helix .A {background-color: #e718e7;}
+	.helix .Z {background-color: #c936c9;}
+	.helix .L {background-color: #ae51ae;}
+	.helix .K {background-color: #a05fa0;}
+	.helix .F {background-color: #986798;}
+	.helix .Q {background-color: #926d92;}
+	.helix .I {background-color: #8a758a;}
+	.helix .W {background-color: #8a758a;}
+	.helix .V {background-color: #857a85;}
+	.helix .D {background-color: #778877;}
+	.helix .X {background-color: #758a75;}
+	.helix .H {background-color: #758a75;}
+	.helix .R {background-color: #6f906f;}
+	.helix .B {background-color: #49b649;}
+	.helix .T {background-color: #47b847;}
+	.helix .S {background-color: #36c936;}
+	.helix .C {background-color: #23dc23;}
+	.helix .Y {background-color: #21de21;}
+	.helix .N {background-color: #1be41b;}
+	.helix .G {background-color: #00ff00;}
+	.helix .P {background-color: #00ff00;}
+}
+
+.buried
+{
+	.C {background-color: #0000ff;}
+	.I {background-color: #0054ab;}
+	.V {background-color: #005fa0;}
+	.L {background-color: #007b84;}
+	.F {background-color: #008778;}
+	.M {background-color: #009768;}
+	.G {background-color: #009d62;}
+	.A {background-color: #00a35c;}
+	.W {background-color: #00a857;}
+	.X {background-color: #00b649;}
+	.S {background-color: #00d52a;}
+	.H {background-color: #00d52a;}
+	.T {background-color: #00db24;}
+	.P {background-color: #00e01f;}
+	.Y {background-color: #00e619;}
+	.N {background-color: #00eb14;}
+	.B {background-color: #00eb14;}
+	.D {background-color: #00eb14;}
+	.Q {background-color: #00f10e;}
+	.Z {background-color: #00f10e;}
+	.E {background-color: #00f10e;}
+	.R {background-color: #00fc03;}
+	.K {background-color: #00ff00;}
+}
+
+.strand
+{
+	.V {background-color: #ffff00;}
+	.I {background-color: #ecec13;}
+	.Y {background-color: #d3d32c;}
+	.F {background-color: #c2c23d;}
+	.W {background-color: #c0c03f;}
+	.L {background-color: #b2b24d;}
+	.T {background-color: #9d9d62;}
+	.C {background-color: #9d9d62;}
+	.Q {background-color: #8c8c73;}
+	.M {background-color: #82827d;}
+	.X {background-color: #797986;}
+	.R {background-color: #6b6b94;}
+	.N {background-color: #64649b;}
+	.H {background-color: #60609f;}
+	.A {background-color: #5858a7;}
+	.S {background-color: #4949b6;}
+	.G {background-color: #4949b6;}
+	.Z {background-color: #4747b8;}
+	.K {background-color: #4747b8;}
+	.B {background-color: #4343bc;}
+	.P {background-color: #2323dc;}
+	.D {background-color: #2121de;}
+	.E {background-color: #0000ff;}
+}
+
+.turn
+{
+	.N {background-color: #ff0000;}
+	.G {background-color: #ff0000;}
+	.P {background-color: #f60909;}
+	.B {background-color: #f30c0c;}
+	.D {background-color: #e81717;}
+	.S {background-color: #e11e1e;}
+	.C {background-color: #a85757;}
+	.Y {background-color: #9d6262;}
+	.K {background-color: #7e8181;}
+	.X {background-color: #7c8383;}
+	.Q {background-color: #778888;}
+	.W {background-color: #738c8c;}
+	.T {background-color: #738c8c;}
+	.R {background-color: #708f8f;}
+	.H {background-color: #708f8f;}
+	.Z {background-color: #5ba4a4;}
+	.E {background-color: #3fc0c0;}
+	.A {background-color: #2cd3d3;}
+	.F {background-color: #1ee1e1;}
+	.M {background-color: #1ee1e1;}
+	.L {background-color: #1ce3e3;}
+	.V {background-color: #07f8f8;}
+	.I {background-color: #00ffff;}
+}
+
+.nucleotide
+{
+	.A {background-color: green;}
+	.C {background-color: orange;}
+	.G {background-color: red;}
+	.T {background-color: blue;}
+}
+
+.rafiki
+{
+	.I {background-color: #ff00d6;}
+	.L {background-color: #ffad00;}
+	.V {background-color: #ff8400;}
+	.A {background-color: #ffef00;}
+	.M {background-color: #ffc600;}
+	.F {background-color: #ff0000;}
+	.W {background-color: #ffd600;}
+	.Y {background-color: #7bff00;}
+	.K {background-color: #0000ff;}
+	.R {background-color: #bd00ff;}
+	.H {background-color: #00ffad;}
+	.D {background-color: #00adff;}
+	.E {background-color: #00ffc6;}
+	.S {background-color: #00ff94;}
+	.T {background-color: #00ff6b;}
+	.N {background-color: #00ffff;}
+	.Q {background-color: #00efff;}
+	.P {background-color: #00ff00;}
+	.G {background-color: #ffff00;}
+	.C {background-color: #c6ff00;}
+}

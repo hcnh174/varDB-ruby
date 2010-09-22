@@ -1,0 +1,12 @@
+gem update --system
+gem install rails-extjs-direct
+gem install mongo
+rake gem:install
+gem install bson
+gem install bson_ext
+
+
+rails console
+rails generate controller pages
+
+

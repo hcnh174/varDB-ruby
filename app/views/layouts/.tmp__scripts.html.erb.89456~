@@ -1,0 +1,7 @@
+<@addScript url="${extjs_url}/adapter/ext/ext-base${debug_javascript_suffix}.js" addparam=false/>
+	<@addScript url="${extjs_url}/ext-all${debug_javascript_suffix}.js" addparam=false/>
+	<@addScript "/remoting/api.js"/>
+	<@addScript "/js/extensions.js"/>
+	<@addScript "/js/nelson.js"/>
+	<@addScript "/js/vardb.js"/>
+	<@onReady>nelson.vardb.Vardb.onReady();</@onReady>

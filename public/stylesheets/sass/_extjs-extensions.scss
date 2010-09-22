@@ -1,0 +1,103 @@
+.x-combo-list .x-combo-list-cursor
+{
+	border: 1px dotted #000000 !important;
+}
+
+/* Hack - added for visual effect */
+.x-combo-list-item
+{
+	cursor:pointer;
+	margin: 1px;
+}
+
+/* resource search */
+
+#search-panel
+{
+	width:600px;
+}
+
+#search-results a
+{
+    color: #385F95;
+    font:bold 11px tahoma, arial, helvetica, sans-serif;
+    text-decoration:none;
+}
+
+#search-results a:hover
+{
+    text-decoration:underline;
+}
+
+#search-results .search-item
+{
+    padding:5px;
+}
+
+#search-results p {
+    margin:3px !important;
+}
+
+#search-results
+{
+    border-bottom:1px solid #ddd;
+    margin: 0 1px;
+    height:300px;
+    overflow:auto;
+}
+
+#search-results .x-toolbar
+{
+    border:0 none;
+}
+
+.search-item
+{
+    font:normal 11px tahoma, arial, helvetica, sans-serif;
+    padding:3px 10px 3px 10px;
+    border:1px solid #fff;
+    border-bottom:1px solid #eeeeee;
+    white-space:normal;
+    color:#555;
+}
+
+.search-item h3
+{
+    display:block;
+    font:inherit;
+    font-weight:bold;
+    color:#222;
+}
+
+.search-item h3 span
+{
+    float: right;
+    font-weight:normal;
+    margin:0 0 5px 5px;
+    width:100px;
+    display:block;
+    clear:none;
+}
+
+/* should allow selecting text in grids in firefox
+.x-grid3-row td
+{
+    -moz-user-select:text;
+}
+*/
+
+
+.x-form-add-trigger
+{
+   background-image: url(../images/addtrigger.gif) !important;
+   background-position: center center !important;    
+   cursor: pointer;    
+   border: 0 !important;    
+   margin-left: 2px;
+}
+
+.x-selectable, .x-selectable *
+{
+	-moz-user-select: text!important;
+	-khtml-user-select: text!important;
+}

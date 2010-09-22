@@ -1,0 +1,23 @@
+<div id="feedbackform"></div>
+
+<!-- if isAdministrator
+<div class="admin">
+[<a href="${vardb.webapp}/reports/feedback.html">Feedback report</a>]
+</div>
+-->
+
+<script>
+function doOnReady()
+{
+	new Ext.ux.vardb.FeedbackForm(
+	{
+		renderTo: 'feedbackform'
+		/*
+		name: '${feedback.name?js_string}',
+		affiliation: '${feedback.affiliation?js_string}',
+		email: '${feedback.email?js_string}',
+		purpose: '${feedback.purpose?js_string}'
+		*/		
+	});
+}
+</script>

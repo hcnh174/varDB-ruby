@@ -1,4 +1,9 @@
 Vardbruby::Application.routes.draw do
+  root :to => 'pages#homepage'
+  match 'homepage', :to => 'pages#homepage'
+  match 'feedback', :to => 'pages#feedback'
+  match 'submitfeedback', :to => 'pages#submitfeedback'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,110 @@
+#loading-mask
+{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:20000;
+    background-color:white;
+}
+
+#loading
+{
+    position:absolute;
+    left:45%;
+    top:40%;
+    padding:2px;
+    z-index:20001;
+    height:auto;
+}
+
+#loading a
+{
+    color:#225588;
+}
+
+#loading .loading-indicator
+{
+    background:white;
+    color:#444;
+    font:bold 13px tahoma,arial,helvetica;
+    padding:10px;
+    margin:0;
+    height:auto;
+}
+
+#loading-msg
+{
+    font: normal 10px arial,tahoma,sans-serif;
+}
+
+#explorer-header
+{
+    background: #7F99BE url(../images/extjs/extjs-header-bg.gif) repeat-x center;
+    
+    h1
+	{
+	    font-size: 16px;
+	    color: #fff;
+	    font-weight: normal;
+	    padding: 5px 10px;
+	}
+}
+
+.explorer-toolbar
+{
+	color: #165EC0;
+	font-weight: bold;
+}
+
+#accordian
+{
+	.x-panel
+	{
+		margin-bottom: 3px;
+		margin-right: 0;
+	}
+	
+	.x-panel-body
+	{
+		border: 0 none;
+	
+		li
+		{
+			margin: 3px;
+			
+			img
+			{
+				width: 16px;
+				height: 16px;
+				vertical-align: middle;
+				margin-right: 2px;
+				margin-bottom: 2px;
+			}
+			
+			a
+			{
+				text-decoration: none;
+				color: #3764A0;
+			}
+			
+			a:hover
+			{
+				text-decoration: underline;
+				color: #15428b;
+			}		
+		}
+	}
+
+	.x-plain-body
+	{
+		background-color: #cad9ec;
+	    padding: 3px 0 0 5px;
+	}
+}
+
+.filterform .x-panel-header
+{
+	background-color: #cad9ec !important;
+}
