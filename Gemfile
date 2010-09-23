@@ -1,6 +1,13 @@
 source 'http://rubygems.org'
 
+#added by nelson 9/23/2010
+require 'rubygems'
+require 'mongo'
+source 'http://gemcutter.org'
+
 gem 'rails', '3.0.0'
+#added by nelson 9/23/2010
+gem "mongo_mapper"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -30,9 +37,9 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # end
 
 #for using MongoDB
-require 'mongo'
-gem 'mongo'
-gem 'bson'
+#require 'mongo'
+#gem 'mongo'
+#gem 'bson'
 #gem 'bson_ext'
 
 # for using SASS for css generation
