@@ -11,4 +11,8 @@ module ApplicationHelper
   def extjs_url
     "http://extjs.cachefly.net/ext-3.2.1"
   end
+  
+  def version
+    "Release 5"
+  end
 end

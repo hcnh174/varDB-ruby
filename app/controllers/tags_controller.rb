@@ -1,4 +1,5 @@
-class SequencesController < ApplicationController
+class TagsController < ApplicationController
+  
   def index
   end
 

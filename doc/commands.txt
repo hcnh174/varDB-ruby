@@ -6,6 +6,7 @@ gem install bson
 gem install bson_ext
 
 
+rails server
 rails console
 rails generate controller pages
 
