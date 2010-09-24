@@ -13,4 +13,4 @@ rails generate controller pages
 git clone git@github.com:hcnh174/varDB.git vardbruby
 git commit -a -m "todo"
 
-
+git pull
