@@ -10,7 +10,15 @@ rails console
 rails generate controller pages
 
 
+git config --global user.name ""
+git config --global user.email
+
 git clone git@github.com:hcnh174/varDB.git vardbruby
-git commit -a -m "todo"
+git add .
+git commit -m "todo"
+
+git push
+
+
 
 
