@@ -4,6 +4,9 @@ Vardbruby::Application.routes.draw do
   match 'feedback', :to => 'pages#feedback'
   match 'submitfeedback', :to => 'pages#submitfeedback'
   
+  resources :sequences
+  resources :tags
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

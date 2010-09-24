@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rss version="2.0">
+  <channel>
+  <title>vardb-announce Google Group</title>
+  <link>http://groups.google.com/group/vardb-announce</link>
+  <description>Announcements about new varDB releases and functionality</description>
+  <language>en</language>
+  <item>
+  <title>varDB release 4 available</title>
+  <link>http://groups.google.com/group/vardb-announce/browse_thread/thread/ae516ffec994a251/cae85acdd905ada8?show_docid=cae85acdd905ada8</link>
+  <description>
+  We are pleased to announce the availability of varDB release 4 &lt;br&gt; &lt;p&gt;OVERVIEW &lt;br&gt; &lt;p&gt;This release includes 83,878 nucleotide sequences (with 46,216 protein &lt;br&gt; translations), 23 diseases, 32 pathogens and 46 gene families. Some &lt;br&gt; enhancements and bug fixes to the web site are also introduced. &lt;br&gt; &lt;p&gt;DATA SOURCES
+  </description>
+  <guid isPermaLink="true">http://groups.google.com/group/vardb-announce/browse_thread/thread/ae516ffec994a251/cae85acdd905ada8?show_docid=cae85acdd905ada8</guid>
+  <author>
+  d...@kuicr.kyoto-u.ac.jp
+  (Diego Diez)
+  </author>
+  <pubDate>Thu, 01 Jul 2010 02:49:48 UT
+</pubDate>
+  </item>
+  <item>
+  <title>Next release of varDB - July 1st!</title>
+  <link>http://groups.google.com/group/vardb-announce/browse_thread/thread/a52076b2f5437670/bea7d80ee2499ecc?show_docid=bea7d80ee2499ecc</link>
+  <description>
+  Hello everybody &lt;br&gt; &lt;p&gt;We are preparing a new data release for varDB (DR4), which will also &lt;br&gt; include some fixes to the web site. The update will take place on July &lt;br&gt; 1st, and so the web site will be down for a couple of hours. &lt;br&gt; &lt;p&gt;Cheers, &lt;br&gt; Diego
+  </description>
+  <guid isPermaLink="true">http://groups.google.com/group/vardb-announce/browse_thread/thread/a52076b2f5437670/bea7d80ee2499ecc?show_docid=bea7d80ee2499ecc</guid>
+  <author>
+  d...@kuicr.kyoto-u.ac.jp
+  (Diego Diez)
+  </author>
+  <pubDate>Thu, 24 Jun 2010 08:32:38 UT
+</pubDate>
+  </item>
+  <item>
+  <title>New varDB release</title>
+  <link>http://groups.google.com/group/vardb-announce/browse_thread/thread/2888e15e5a1a2e05/64ebdbbf537e86c3?show_docid=64ebdbbf537e86c3</link>
+  <description>
+  We are please to announce the third data release of varDB: &lt;br&gt; OVERVIEW &lt;br&gt; This release includes 77,536 nucleotide sequences (with 45,963 protein &lt;br&gt; translations), 23 diseases, 32 pathogens and 46 gene families. A few &lt;br&gt; enhancements to the web site are also introduced. &lt;br&gt; DATA SOURCES &lt;br&gt; o Sequence information was downloaded from the following databases:
+  </description>
+  <guid isPermaLink="true">http://groups.google.com/group/vardb-announce/browse_thread/thread/2888e15e5a1a2e05/64ebdbbf537e86c3?show_docid=64ebdbbf537e86c3</guid>
+  <author>
+  d...@kuicr.kyoto-u.ac.jp
+  (Diego Diez)
+  </author>
+  <pubDate>Thu, 01 Apr 2010 03:26:44 UT
+</pubDate>
+  </item>
+  </channel>
+</rss>

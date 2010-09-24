@@ -3,11 +3,13 @@ source 'http://rubygems.org'
 #added by nelson 9/23/2010
 require 'rubygems'
 require 'mongo'
-source 'http://gemcutter.org'
+#source 'http://gemcutter.org'
 
 gem 'rails', '3.0.0'
 #added by nelson 9/23/2010
+gem "bson_ext"
 gem "mongo_mapper"
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -69,7 +69,7 @@ nelson.vardb.widgets.CommentWindow = Ext.extend(Ext.Window,
 			method: 'post',
 			waitTitle: 'Connecting',
 			waitMsg: 'Submitting comment...',
-			url : vardb.webapp+'/ajax/comments/submit.json',
+			url : vardb.webapp+'/ajax/submit_comment',
 			params : {type: self.type, identifier: self.identifier},
 			failure: utils.onFailure,
 			success: function(form,action)
