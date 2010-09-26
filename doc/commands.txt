@@ -10,7 +10,7 @@ rails server
 rails console
 rails generate controller pages
 
-
+git config --global core.autocrlf false
 git config --global user.name ""
 git config --global user.email
 

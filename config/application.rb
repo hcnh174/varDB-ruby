@@ -1,6 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
-#require 'rails/all'
+# require 'rails/all'
 
 #changed by nelson 9/22/2010 - avoid loading ActiveRecord
 require "action_controller/railtie"

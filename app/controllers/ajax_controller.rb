@@ -2,41 +2,28 @@ class AjaxController < ApplicationController
   include Mongo
   
   def comments
-#    puts params[:type]
-#    puts params[:identifier]
-#    puts params[:start]
-#    puts params[:limit]
-    
-    headers["Content-Type"] = "application/json"
-    
+
     db = Connection.new.db("vardb")
     coll = db.collection("comments")
-    
-    #List<CComment> comments=userService.getComments(type,identifier,paging);
-    @comments = coll.find()
+
+    @comments = coll.find({"type" => params[:type], "identifier" => params[:identifier]},
+      {:skip => params[:start].to_i, :limit => params[:limit].to_i, :sort => ["date",:desc]})
 
     render({:json => { :comments => @comments, :count => @comments.count() }.to_json()})
-
-    #render({:text => 'Hi', :layout => false})
   end
   
   def submit_comment
-    puts params[:type]
-    puts params[:identifier]
-    puts params[:text]
     
-    #userService.addComment(getUserId(),type,identifier,text.trim());
-
-    comment = {"user_id" => "todo", "type" => params[:type], "identifier" => params[:identifier],
-      "text" => params[:text], "date" => "9/24/2010"}
-      
-    db = Connection.new.db("vardb")
-    coll = db.collection("comments")
-    coll.insert(comment)
-    
-    headers["Content-Type"] = "application/json"
-    #render :layout => false
-    render({:text => "{'success':true}"})
+    comment = Comment.create({
+      "user_id" => "todo",
+      "type" => params[:type],
+      "identifier" => params[:identifier],
+      "text" => params[:text],
+      "date" => DateTime.now
+    })
+    puts comment.user_id
+ 
+    render({:json => {:success => true}})
   end
   
   def announcements
