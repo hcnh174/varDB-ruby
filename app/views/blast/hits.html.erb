@@ -1,0 +1,22 @@
+<% content_for :title do %>Blast results<% end %>
+<% content_for :curpage do %>#{@results.blastType}<% end %>
+
+<#if image??>
+<@vardb.blastFigure image/>
+</#if>
+
+<div id="resultsdiv"></div>
+
+<@vardb.addScript>
+var counts=${countsjson.json};
+</@vardb.addScript>
+
+<% content_for :onready do %>	
+	var results=new Ext.ux.vardb.blast.Results(
+	{
+		renderTo: 'resultsdiv',
+		list_id: '${results.id}',
+		blasttype: '${results.blastType}',
+		counts: counts
+	});
+<% end %>

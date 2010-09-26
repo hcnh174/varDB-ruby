@@ -1,0 +1,13 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.layout title="References" location={'References':'/references.html'} cur="references">
+
+<div id="griddiv"></div>
+
+<@vardb.comments type="PAGE" identifier="references"/>
+
+<@vardb.onReady>
+var grid=new Ext.ux.vardb.Refs({renderTo: 'griddiv'});
+</@vardb.onReady>
+
+</@vardb.layout>

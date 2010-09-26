@@ -1,0 +1,18 @@
+<#import "/global.ftl" as vardb>
+<#import "/spring.ftl" as spring/>
+
+<@vardb.layout title="RevTrans" cur="revtrans">
+
+<p class="introduction">
+Create a codon alignment using <a href="http://www.cbs.dtu.dk/services/RevTrans/" target="_blank">RevTrans</a>
+</p>
+<br/>
+
+<@vardb.showErrors/>
+<div id="formdiv"></div>
+
+<% content_for :onready do %>
+new Ext.ux.vardb.RevTransForm({renderTo: 'formdiv'});
+<% end %>
+
+

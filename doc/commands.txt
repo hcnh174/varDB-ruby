@@ -20,6 +20,8 @@ git commit -m "todo"
 
 git push
 
+ren *.ftl *.html.erb
+
 
 
 git pull

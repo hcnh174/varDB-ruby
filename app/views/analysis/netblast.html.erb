@@ -1,0 +1,22 @@
+<#import "/global.ftl" as vardb>
+<#import "/spring.ftl" as spring/>
+
+<@vardb.layout title="Netblast results" cur="netblast" shownavigation=false>
+
+<p class="introduction">
+View the  <a href="${vardb.webapp}/analysis/netblast/load.xml?id=${analysis.id}" target="_blank">raw Netblast XML output</a>. 
+Sequences can be downloaded in bulk from NCBI using the <a href="http://www.ncbi.nlm.nih.gov/sites/batchentrez?db=Nucleotide" target="_blank">Batch Entrez</a> site.
+</p>
+<br/> 
+
+<div id="griddiv"></div><br/>
+
+<% content_for :onready do %>
+	var grid=new Ext.ux.vardb.blast.NetblastGrid(
+	{
+		analysis_id: '${analysis.id}',
+		renderTo: 'griddiv'
+	});
+<% end %>
+
+

@@ -1,0 +1,22 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.viewportlayout title="varDB Explorer">
+
+<@vardb.addScript>
+var explorer;
+</@vardb.addScript>
+
+<@vardb.onReady>
+	Ext.Ajax.request(
+	{
+		url: vardb.webapp+'/ajax/explorer.json',
+		method: 'post',
+		failure: Ext.ux.vardb.Vardb.onFailure,
+		success: function(response, options)
+		{
+			var config=Ext.decode(response.responseText);
+			explorer=new Ext.ux.vardb.explorer.Explorer(config);
+		}
+	});
+</@vardb.onReady>
+</@vardb.viewportlayout>

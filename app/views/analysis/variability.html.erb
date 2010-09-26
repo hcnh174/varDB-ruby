@@ -1,0 +1,32 @@
+<#import "/global.ftl" as vardb>
+<#import "/spring.ftl" as spring/>
+
+<@vardb.layout title="Variability Results" cur="variability" shownavigation=false>
+
+<p class="introduction">
+Variability is calculated in several ways, as described on the <a href="http://imed.med.ucm.es/PVS/pvs-help.html" target="_blank">Protein Variability Server</a>.
+</p>
+
+<div id="variabilityplot" style="border: 1px solid gray;"><img style="display: block;margin-left: auto;margin-right: auto;" src="${vardb.webapp}/analysis/variability/plot.img?id=${analysis.id}"/></div><br/>
+
+<div id="griddiv"></div><br/>
+
+<% content_for :scripts do %>
+var variability=${variabilityjson.json};
+<% end %>
+
+
+<% content_for :onready do %>
+var variabilitygrid=new Ext.ux.vardb.VariabilityGrid({renderTo: 'griddiv', data: variability});
+<#--
+var variabilitycharts=new Ext.ux.vardb.VariabilityCharts(
+{
+	renderTo: 'variabilitycharts',
+	shannon: [<#list consensus.positions as position>${position.shannonEntropy?string("0.##")}<#if position_has_next>,</#if></#list>],
+	simpson: [<#list consensus.positions as position>${position.simpsonDiversityIndex?string("0.##")}<#if position_has_next>,</#if></#list>],
+	wukabat: [<#list consensus.positions as position>${position.wuKabatVariabilityCoefficient?string("0.##")}<#if position_has_next>,</#if></#list>]
+});
+-->
+<% end %>
+
+

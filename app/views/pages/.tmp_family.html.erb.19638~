@@ -1,0 +1,72 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.layout title="Gene family: ${family.pathogen.name} ${family.name}" cur="families" lastModified=family
+	location={'Pathogens':'/pathogens.html','${family.pathogen.name}':'/pathogens/${family.pathogen.identifier}.html','${family.name}':'/families/${family.identifier}.html'}>
+
+<@vardb.htmlfield obj=family/>
+
+<fieldset class="padded">
+
+<@vardb.pathogenfield family/>
+<@vardb.field obj=family property="alias" label="Aliases"/>
+<@vardb.field obj=family property="description" label="Description"/>
+<@vardb.field obj=family property="antigenicvariation" label="Antigenic variation"/>
+<@vardb.orthologfield family/>
+
+<!-- gene information -->
+<@vardb.field obj=family property="familysize" label="Family size"/>
+<@vardb.field obj=family property="switchingrate" label="Switching rate"/>
+<@vardb.field obj=family property="chromosomes" label="Chromosome locations"/>
+<@vardb.field obj=family property="expression" label="Expression"/>
+<@vardb.field obj=family property="introns" label="Intron structure"/>
+
+<!-- protein information -->
+<@vardb.field obj=family property="protein" label="Protein"/>
+<@vardb.field obj=family property="daltons" label="Size"/>
+<@vardb.field obj=family property="location" label="Location"/>
+<@vardb.field obj=family property="function" label="Function"/>
+<@vardb.field obj=family property="ligands" label="Ligands"/>
+<@vardb.field obj=family property="url" label="URL"/>
+<@vardb.kegg_ortholog obj=family property="kegg_ortholog" label="KEGG"/>
+<@vardb.kegg_pathway_ortholog obj=family property="kegg_pathway" ortholog="kegg_family" label="Pathway"/>
+<@vardb.alignmentfield family/>
+</fieldset>
+
+<#if image??>
+<@vardb.architectureFigure image/>
+</#if>
+
+<div id="sequencesdiv"></div>
+<div id="resourcegridsdiv"></div><br/>
+
+<@vardb.notes obj=family/>
+
+<@vardb.references family.refs/>
+
+<@vardb.lastModified family/>
+
+<@vardb.comments type="FAMILY" identifier=family.identifier/>
+
+<% content_for :scripts do %>
+var sequencesets=${sequencesetsjson.json};
+var paralogs=${paralogsjson.json};
+var subgroups=${subgroupsjson.json};
+var structures=${structuresjson.json};
+var pfams=${pfamsjson.json};
+<% end %>
+
+<% content_for :onready do %>
+	var grid = new Ext.ux.vardb.SequenceGrid(
+	{
+		renderTo: 'sequencesdiv',
+		resource: {type: 'FAMILY', id: ${family.id?c}, identifier: '${family.identifier}'},
+		filter: 'family=${family.identifier}'
+	});
+	grid=new Ext.ux.vardb.PfamGrid({renderTo: 'resourcegridsdiv', data: pfams, style: 'margin: 20px 0 0 0'});
+	grid = new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Sequence sets', data: sequencesets});
+	grid = new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Paralog groups', data: paralogs});
+	grid=new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Subgroups', data: subgroups, resourceType: 'SUBGROUP'});
+	grid=new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Structures', data: structures, resourceType: 'STRUCTURE'});
+<% end %>
+
+

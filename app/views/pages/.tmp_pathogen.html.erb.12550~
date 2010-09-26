@@ -1,0 +1,92 @@
+<% content_for :title do %>Pathogens<% end %>
+<% content_for :curpage do %>pathogens<% end %>
+<!--  -->
+
+<@vardb.layout title="Pathogen: ${pathogen.name}" cur="pathogens" lastModified=pathogen
+	location={'Pathogens':'/pathogens.html','${pathogen.name}':'/pathogens/${pathogen.identifier}.html'}>
+
+<@vardb.htmlfield obj=pathogen/>
+
+<fieldset class="padded">
+<@vardb.field obj=pathogen property="name" label="Name" style="font-style:italic;"/>
+<@vardb.field obj=pathogen property="dtype.label" label="Pathogen type"/>
+<@vardb.field obj=pathogen property="description" label="Description"/>
+<@vardb.field obj=pathogen property="taxgroup" label="Group"/>
+<@vardb.lineagefield pathogen.lineage/>
+<@vardb.field obj=pathogen property="distribution" label="Distribution"/>
+<@vardb.field obj=pathogen property="lifecycle" label="Life cycle"/>
+<@vardb.field obj=pathogen property="chromosomes" label="Chromosomes"/>
+<@vardb.field obj=pathogen property="gccontent" label="GC content"/>
+<@vardb.field obj=pathogen property="numgenes" label="Genes"/>
+<@vardb.field obj=pathogen property="numproteins" label="Proteins"/>
+<@vardb.field obj=pathogen property="numbases" label="Bases"/>
+<@vardb.urlfield obj=pathogen property="genome" label="Genome"/>
+<@vardb.kegg_pathogen obj=pathogen property="kegg_pathway" label="KEGG"/>
+<@vardb.kegg_pathway obj=pathogen property="kegg_pathway" label="Pathway"/>
+<#if pathogen.dtype=='VIRUS'>
+	<@vardb.field obj=pathogen property="baltimore" label="Baltimore classification" suffix=".label"/>
+	<@vardb.field obj=pathogen property="nucleicAcidType" label="Nucleic acid type" suffix=".label"/>
+	<@vardb.field obj=pathogen property="shape" label="Shape" suffix=".label"/>
+	<@vardb.field obj=pathogen property="strandedness" label="Strandedness" suffix=".label"/>
+	<@vardb.field obj=pathogen property="sense" label="Sense" suffix=".label"/>
+	<@vardb.field obj=pathogen property="reverseTranscription" label="Reverse transcribing" suffix="?string"/>
+	<@vardb.field obj=pathogen property="size" label="Size"/>
+	<@vardb.field obj=pathogen property="envelope" label="Envelope" suffix="?string"/>
+</#if>
+<#if pathogen.dtype=='BACTERIA'>
+	<@vardb.field obj=pathogen property="size" label="Size"/>
+	<@vardb.field obj=pathogen property="morphology" label="Morphology"/>
+	<@vardb.field obj=pathogen property="gram" label="Gram-staining" suffix=".label"/>
+	<@vardb.field obj=pathogen property="aerobic" label="Aerobic" suffix="?string"/>
+	<@vardb.field obj=pathogen property="plasmids" label="Plasmids"/>
+	<@vardb.field obj=pathogen property="appendages" label="Appendages"/>
+</#if>
+<#if pathogen.dtype=='EUKARYOTE'>
+</#if>
+<@vardb.field obj=pathogen property="antigenicvariation" label="Antigenic variation"/>
+</fieldset>
+
+<@vardb.notes obj=pathogen/>
+
+<div id="sequencesdiv"></div>
+<div id="resourcesdiv"></div><br/>
+<div id="codonusagediv"></div>
+
+<@vardb.references pathogen.refs/>
+
+<@vardb.lastModified pathogen/>
+
+<@vardb.comments type="PATHOGEN" identifier=pathogen.identifier/>
+
+<% content_for :scripts do %>
+var families=${familiesjson.json};
+var genomes=${genomesjson.json};
+var diseases=${diseasesjson.json};
+var drugs=${drugsjson.json};
+var codonusage=${codonusagejson.json};
+<% end %>
+
+<% content_for :onready do %>
+	var grid = new Ext.ux.vardb.SequenceGrid(
+	{
+		renderTo: 'sequencesdiv',
+		resource: {type: 'PATHOGEN', id: ${pathogen.id?c}, identifier: '${pathogen.identifier}'},
+		filter: 'pathogen=${pathogen.identifier}',
+		numsequences: ${pathogen.numsequences?c}
+	});
+	
+	var resourcesdiv='resourcesdiv';	
+	grid = new Ext.ux.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Families', data: families, resourceType: 'FAMILY'});
+	grid = new Ext.ux.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Genomes', data: genomes, resourceType: 'GENOME'});
+	grid = new Ext.ux.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Diseases', data: diseases, resourceType: 'DISEASE'});
+	grid = new Ext.ux.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Drugs', data: drugs, resourceType: 'DRUG'});
+	
+	var codonusagetable=new Ext.ux.vardb.CodonUsageTable(
+	{
+		renderTo: 'codonusagediv',
+		data: codonusage
+	});
+
+<% end %>
+
+

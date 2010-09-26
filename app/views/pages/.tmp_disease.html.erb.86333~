@@ -1,0 +1,50 @@
+<% content_for :title do %>Pathogens<% end %>
+<% content_for :curpage do %>pathogens<% end %>
+<!--  -->
+
+<@vardb.layout title="Disease: ${disease.name}" cur="diseases" lastModified=disease
+	location={'Diseases':'/diseases.html','${disease.name}':'/diseases/${disease.identifier}.html'} >
+
+<@vardb.htmlfield obj=disease/>
+
+<fieldset class="padded">
+<@vardb.field obj=disease property="description" label="Description"/>
+<@vardb.field obj=disease property="icd10" label="ICD-10"/>
+<@vardb.field obj=disease property="host" label="Host"/>
+<@vardb.field obj=disease property="distribution" label="Distribution"/>
+<@vardb.field obj=disease property="morbidity" label="Morbidity"/>
+<@vardb.field obj=disease property="mortality" label="Mortality"/>
+<@vardb.field obj=disease property="pathogenesis" label="Pathogenesis"/>
+<@vardb.field obj=disease property="transmission" label="Transmission"/>
+<@vardb.field obj=disease property="symptoms" label="Symptoms"/>
+<@vardb.field obj=disease property="diagnosis" label="Diagnosis"/>
+<@vardb.field obj=disease property="prevention" label="Prevention"/>
+<@vardb.field obj=disease property="treatment" label="Treatment"/>
+<@vardb.field obj=disease property="vaccines" label="Vaccines"/>
+<@vardb.field obj=disease property="history" label="History"/>
+<@vardb.urlfield obj=disease property="url" label="Url"/>
+<@vardb.kegg_disease obj=disease property="kegg_disease" label="KEGG"/>
+<@vardb.kegg_pathway obj=disease property="kegg_pathway" label="Pathway"/>
+</fieldset>
+
+<div id="resourcegridsdiv"></div><br/>
+
+<@vardb.addScript>
+var pathogens=${pathogensjson.json};
+var drugs=${drugsjson.json};
+</@vardb.addScript>
+
+<@vardb.notes obj=disease/>
+
+<@vardb.references disease.refs/>
+
+<@vardb.lastModified disease/>
+
+<@vardb.comments type="DISEASE" identifier=disease.identifier/>
+
+<@vardb.onReady>
+	var grid = new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Pathogens', data: pathogens, resourceType: 'PATHOGEN'});
+	grid = new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Drugs', data: drugs, resourceType: 'DRUG'});
+</@vardb.onReady>
+
+</@vardb.layout>

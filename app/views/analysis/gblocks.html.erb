@@ -1,0 +1,22 @@
+<#import "/global.ftl" as vardb>
+<#import "/spring.ftl" as spring/>
+
+<@vardb.layout title="Gblocks Results" cur="gblocks" shownavigation=false>
+
+<p class="introduction">
+Gblocks conserved regions were found for the following column ranges: ${location}
+</p> 
+<br/>
+
+<p class="introduction">
+View the raw Gblocks <a href="${vardb.webapp}/analysis/gblocks/output.html?id=${analysis.id}" target="_blank">output</a>. 
+The following table shows the positions of conserved blocks mapped relative to each sequence.
+</p> 
+<br/>
+${table.html}
+
+<% content_for :onready do %>
+
+<% end %>
+
+

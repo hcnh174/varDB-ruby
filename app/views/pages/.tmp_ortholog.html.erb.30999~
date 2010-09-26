@@ -1,0 +1,60 @@
+<% content_for :title do %>Pathogens<% end %>
+<% content_for :curpage do %>pathogens<% end %>
+<!--  -->
+
+<@vardb.layout title="Ortholog group: ${ortholog.name}" cur="orthologs" lastModified=ortholog
+	location={'Ortholog groups':'/orthologs.html','${ortholog.name}':'/orthologs/${ortholog.identifier}.html'}>
+
+<@vardb.htmlfield obj=ortholog/>
+	
+<fieldset class="padded">
+<@vardb.field obj=ortholog property="name" label="Name"/>
+<@vardb.field obj=ortholog property="description" label="Description"/>
+<@vardb.kegg_ortholog obj=ortholog property="kegg_ortholog" label="KEGG"/>
+<@vardb.kegg_pathway_ortholog obj=ortholog property="kegg_pathway" ortholog="kegg_ortholog" label="Pathway"/>
+<@vardb.alignmentfield ortholog/>
+</fieldset>
+
+<div id="sequencesdiv"></div>
+<br/>
+<div id="familiesdiv"></div><br/>
+
+<@vardb.notes obj=ortholog/>
+
+<@vardb.lastModified ortholog/>
+
+<@vardb.comments type="ORTHOLOG" identifier=ortholog.identifier/>
+
+<% content_for :scripts do %>
+var families=
+{
+	rows:
+	[
+		<#list ortholog.families as family>
+		{
+			id: ${family.id?c},
+			pathogen_name: '${family.pathogen.name?js_string}',
+			pathogen_identifier: '${family.pathogen.identifier}',
+			family_name: '${family.pathogen.name?js_string} ${family.name?js_string}',
+			family_identifier: '${family.identifier}',
+			family_description: '${family.description?js_string}',
+			family_count: ${family.numsequences?c}
+		}<#if family_has_next>,</#if>
+		</#list>
+	]
+};
+<% end %>
+
+<% content_for :onready do %>
+	var grid = new Ext.ux.vardb.SequenceGrid(
+	{
+		renderTo: 'sequencesdiv',
+		resource: {type: 'ORTHOLOG', id: ${ortholog.id?c}, identifier: '${ortholog.identifier}'},
+		filter: 'ortholog=${ortholog.identifier}',
+		numsequences: ${ortholog.numsequences?c},
+		pagesize: 5
+	});
+	grid = new Ext.ux.vardb.OrthologFamilies({renderTo: 'familiesdiv', data: families});
+<% end %>
+
+

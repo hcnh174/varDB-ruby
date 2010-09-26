@@ -1,0 +1,57 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.layout title="Pfam family: ${pfam.identifier}" cur="pfam" lastModified=pfam>
+<fieldset class="padded">
+<span class="label">Name:</span> ${pfam.identifier}<br/>
+<span class="label">Accession:</span> <a href="${pfam.url}" target="_blank">${pfam.name}</a><br/>
+<span class="label">Pfam type:</span> <a href="javascript:vardb.getTerm('pfam_terms')" target="_blank">${pfam.type}</a><br/>
+<@vardb.field obj=pfam property="description" label="Description"/>
+<#if pfam.clan??>
+<span class="label">Clan:</span> ${pfam.clan.identifier} (<a href="${pfam.clan.url}" target="_blank">${pfam.clan.name}</a>)<br/>
+</#if>
+</fieldset>
+
+<div id="sequencesdiv"></div>
+
+<br/>
+<div id="associateddiv"></div>
+
+<@vardb.lastModified pfam/>
+
+<@vardb.comments type="PFAM" identifier=pfam.identifier/>
+
+<@vardb.addScript>
+var associated=
+{
+	rows:
+	[
+		<#list associated as pf>
+		{
+			id: ${pf.pfam.id?c},
+			identifier: '${pf.pfam.identifier}',
+			name: '${pf.pfam.name?js_string}',
+			url: '${pf.pfam.url}',
+			type: '${pf.pfam.type}',
+			description: '${pf.pfam.description?js_string}',
+			clan_identifier: '<#if pf.pfam.clan?? && pf.pfam.clan.identifier??>${pf.pfam.clan.identifier?js_string}</#if>',
+			clan_name: '<#if pf.pfam.clan?? && pf.pfam.clan.name??>${pf.pfam.clan.name?js_string}</#if>',
+			numsequences: ${pf.numsequences?c}
+		}<#if pf_has_next>,</#if>
+		</#list>
+	]
+};
+</@vardb.addScript>
+
+<@vardb.onReady>
+	var sequencegrid = new Ext.ux.vardb.SequenceGrid(
+	{
+		renderTo: 'sequencesdiv',
+		resource: {type: 'PFAM', id: ${pfam.id?c}, identifier: '${pfam.identifier}'},
+		filter: 'pfam=${pfam.identifier}',
+		numsequences: ${pfam.numsequences?c},
+		pagesize: 10
+	});
+	
+	var associatedgrid=new Ext.ux.vardb.AssociatedPfamGrid({renderTo: 'associateddiv', data: associated});
+</@vardb.onReady>
+</@vardb.layout>

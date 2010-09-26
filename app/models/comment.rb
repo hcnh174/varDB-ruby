@@ -5,7 +5,7 @@ class Comment
   key :type, String
   key :identifier, String
   key :text, String
-  key :date, String
+  key :date, DateTime
   timestamps!
   
 end

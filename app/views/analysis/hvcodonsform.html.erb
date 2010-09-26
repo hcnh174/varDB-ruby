@@ -1,0 +1,21 @@
+<#import "/global.ftl" as vardb>
+<#import "/spring.ftl" as spring/>
+
+<@vardb.layout title="Analyze alignment" cur="hvcodons">
+
+<@vardb.showErrors/>
+<form action="${vardb.webapp}/hvcodons.html" method="post">
+Pathogen
+<select name="pathogen">
+<#list pathogens as pathogen>
+<option value="${pathogen.identifier}">${pathogen.name}</option>
+</#list>
+</select><br/>
+Protein alignment<br/>
+<textarea name="aasequences" cols="60" rows="10"></textarea><br/>
+Codon alignment (DNA with introns and stop codons aligned)<br/>
+<textarea name="ntsequences" cols="60" rows="10"></textarea><br/>
+<input type="submit" value="Submit"/><br/>
+</form>
+
+

@@ -1,27 +1,70 @@
 class PagesController < ApplicationController
   include Mongo
+  #include Bio
   
   def homepage
-    @title = 'varDB: Antigenic variation database'
+    #puts current_user
+    
+    #@title = 'varDB: Antigenic variation database'
     #render({:text => "<h1>Homepage</h1>"})
 
-    connection = Connection.new
-    connection.database_names.each { |name| puts name }
+    #connection = Connection.new
+    #connection.database_names.each { |name| puts name }
     #connection.database_info.each { |info| puts info.inspect}
     
     #db = Connection.new.db("vardb")
     
+    #seq = Bio::Sequence::NA.new("atgcatgcaaaa")
+    #seq = Sequence::NA.new("atgcatgcaaaa")
+    #puts seq
+    
   end
   
   def feedback
-    @title = 'varDB Feedback Form'
-    @curpage = 'feedback'
+    #@title = 'varDB Feedback Form'
+    #@curpage = 'feedback'
   end
   
   def submitfeedback
-    @title = 'varDB Feedback Form'
-    @curpage = 'feedback'
+    #@title = 'varDB Feedback Form'
+    #@curpage = 'feedback'
     puts params[:email]
     render({:text => "Submitted. (#{params[:email]})"})
+  end
+  
+  def pathogens  
+  end
+
+  def pathogen
+  end
+
+  def families  
+  end
+
+  def family
+  end
+
+  def diseases  
+  end
+
+  def disease  
+  end
+
+  def pfams
+  end
+
+  def pfam
+  end
+
+  def structures  
+  end
+
+  def structure
+  end
+
+  def sequence
+    db = Connection.new.db("vardb")
+    coll = db.collection("sequences")
+    @sequence = coll.find_one("accession" => params[:accession])
   end
 end

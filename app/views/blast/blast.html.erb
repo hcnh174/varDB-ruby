@@ -1,0 +1,20 @@
+<% content_for :title do %>BLAST<% end %>
+<% content_for :curpage do %>blast<% end %>
+
+<div id="formdiv"></div>
+<br/>
+
+<% content_for :onready do %>
+	var form=new Ext.ux.vardb.blast.BlastForm(
+	{
+		<#if params.query?has_content>query: "${params.query?js_string}",</#if>
+		program: '${params.program}',
+		evalue: '${params.evalue}',
+		lowcomplexity: ${params.lowcomplexity?string},
+		matrix:	'${params.matrix}',
+		<#if params.gapopen??>gapopen: ${params.gapopen?c},</#if>
+		<#if params.gapextend??>gapextend: ${params.gapextend?c},</#if>
+		maxresults: ${params.maxresults?c}
+	});
+<% end %>
+

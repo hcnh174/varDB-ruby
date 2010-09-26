@@ -1,0 +1,28 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.fullscreenlayout title="BLASTclust results" location={'BLASTclust':'/analysis/blastclust.html'} cur="blastclust">
+
+<table class="data">
+<tr>
+	<th>Cluster</th>
+	<th>Accessions</th>
+</tr>
+<#list clusters.clusters as cluster>
+<tr>
+	<td>Cluster ${cluster.number}</td>
+	<td><#list cluster.ids as id>${id}<#if id_has_next>, </#if></#list></td>
+</tr>
+</#list>
+</table>
+<br/>
+
+<p class="introduction">Raw BLASTclust output</p>
+<textarea cols="60" rows="10">
+${analysis.results.raw}
+</textarea>
+
+<@vardb.onReady>
+
+</@vardb.onReady>
+
+</@vardb.fullscreenlayout>

@@ -1,0 +1,39 @@
+<#import "/global.ftl" as vardb>
+<#import "/spring.ftl" as spring/>
+
+<@vardb.layout title="Align protein hypervariable regions" location={} cur="hvalign">
+<p class="introduction">
+This tool attempts to improve an existing protein multiple sequence alignment 
+by dividing the alignment into conserved and variable regions using <a href="http://molevol.ibmb.csic.es/Gblocks_server.html" target="_blank">Gblocks</a>.
+Variable regions are then split into clusters of similar sequences using <a href="http://www.ncbi.nlm.nih.gov/Web/Newsltr/Spring04/blastlab.html" target="_blank">BLASTClust</a>.
+Each variable cluster is aligned separately using <a href="http://align.bmr.kyushu-u.ac.jp/mafft/software/" target="_blank">MAFFT</a>,
+and then the partial alignments are assembled using MAFFT's profile alignment option.
+The variable and conserved regions are then reassembled to complete the alignment.
+The tool currently cannot be used with nucleotide sequences.
+An existing alignment is currently required to reduce load on the server.
+</p>
+<br/>
+
+<@vardb.showErrors/>
+<div id="hvalignform"></div>
+
+<% content_for :onready do %>
+	var form=new Ext.ux.vardb.HvAlignForm({
+		renderTo: 'hvalignform',
+		sequences: '',
+		gblocks_gaps: '${form.gblocks_gaps}',
+		gblocks_minBlock: ${form.gblocks_minBlock},
+		gblocks_minConserved: ${form.gblocks_minConserved},
+		gblocks_minFlanking: ${form.gblocks_minFlanking},
+		gblocks_maxNonconserved: ${form.gblocks_maxNonconserved},
+		mafft_strategy: '${form.mafft_strategy}',
+		mafft_scorematrix: '${form.mafft_scorematrix}',
+		mafft_op: '${form.mafft_op}',
+		mafft_ep: '${form.mafft_ep}',
+		blastclust_minimumLength: ${form.blastclust_minimumLength},
+		blastclust_minimumSize: ${form.blastclust_minimumSize}
+	});
+	
+<% end %>
+
+

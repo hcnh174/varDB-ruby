@@ -1,0 +1,15 @@
+<% content_for :title do %>Pathogens<% end %>
+<% content_for :curpage do %>pathogens<% end %>
+<!--  -->
+
+<@vardb.layout title="References" location={'References':'/references.html'} cur="references">
+
+<div id="griddiv"></div>
+
+<@vardb.comments type="PAGE" identifier="references"/>
+
+<% content_for :onready do %>
+var grid=new Ext.ux.vardb.Refs({renderTo: 'griddiv'});
+<% end %>
+
+

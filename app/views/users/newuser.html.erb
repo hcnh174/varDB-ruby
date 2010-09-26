@@ -1,0 +1,10 @@
+<% content_for :title do %>New User<% end %>
+<% content_for :curpage do %>newuser<% end %>
+
+<@vardb.showErrors/>
+<div id="newuserform"></div>
+
+<% content_for :onready do %>
+	new Ext.ux.vardb.NewUserForm({renderTo: 'newuserform'});
+<% end %>
+

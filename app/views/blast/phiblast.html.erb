@@ -1,0 +1,27 @@
+<% content_for :title do %>BLAST<% end %>
+<% content_for :curpage do %>blast<% end %>
+
+<@vardb.layout title="PHI-BLAST" location={'PHI-BLAST':'/blast/phiblast.html'} cur="phiblast">
+
+<p class="introduction">
+PHI-BLAST searches protein sequences using a combination of pattern matching and local alignment to reduce the probability of false positives.
+</p>
+
+<div id="formdiv"></div>
+<br/>
+
+<% content_for :onready do %>
+	var form=new Ext.ux.vardb.blast.PhiBlastForm(
+	{
+		<#if params.query?has_content>query: "${params.query?js_string}",</#if>
+		wordsize: ${params.wordsize?c},
+		evalue: '${params.evalue}',
+		maxresults: ${params.maxresults?c},
+		lowcomplexity: ${params.lowcomplexity?string},
+		matrix:	'${params.matrix}',
+		<#if params.gapopen??>gapopen: ${params.gapopen?c},</#if>
+		<#if params.gapextend??>gapextend: ${params.gapextend?c},</#if>
+		pattern: "${params.pattern?js_string}"
+	});
+<% end %>
+

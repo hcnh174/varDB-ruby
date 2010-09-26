@@ -1,0 +1,18 @@
+<#import "/global.ftl" as vardb>
+<#import "/spring.ftl" as spring/>
+
+<@vardb.layout title="Gblocks" cur="gblocks">
+
+<p class="introduction">
+This tool uses <a href="http://molevol.cmima.csic.es/castresana/Gblocks_server.html" target="_blank">Gblocks</a> to identify conserved blocks in a multiple sequence alignment.
+</p>
+<br/>
+
+<@vardb.showErrors/>
+<div id="formdiv"></div>
+
+<% content_for :onready do %>
+new Ext.ux.vardb.GblocksForm({renderTo: 'formdiv'});
+<% end %>
+
+

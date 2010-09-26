@@ -1,0 +1,20 @@
+<#import "/global.ftl" as vardb>
+<#import "/spring.ftl" as spring/>
+
+<@vardb.layout title="Create a codon alignment" cur="codonalign">
+
+<p class="introduction">
+Create a codon alignment based on an existing protein multiple sequence alignment 
+using <a href="http://www.bork.embl.de/pal2nal/" target="_blank">PAL2NAL</a> 
+or <a href="http://www.cbs.dtu.dk/services/RevTrans/" target="_blank">RevTrans</a>.
+</p>
+<br/>
+
+<@vardb.showErrors/>
+<div id="formdiv"></div>
+
+<% content_for :onready do %>
+new Ext.ux.vardb.CodonAlignForm({renderTo: 'formdiv'});
+<% end %>
+
+

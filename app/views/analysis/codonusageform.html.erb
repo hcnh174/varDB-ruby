@@ -1,0 +1,18 @@
+<#import "/global.ftl" as vardb>
+<#import "/spring.ftl" as spring/>
+
+<@vardb.layout title="Codon Usage" cur="codonusage">
+
+<p class="introduction">
+This tool calculates various metrics associated with codon usage.
+</p>
+<br/>
+
+<@vardb.showErrors/>
+<div id="formdiv"></div>
+
+<% content_for :onready do %>
+new Ext.ux.vardb.CodonUsageForm({renderTo: 'formdiv'});
+<% end %>
+
+

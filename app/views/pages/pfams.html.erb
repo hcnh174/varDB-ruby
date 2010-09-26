@@ -1,0 +1,21 @@
+<% content_for :title do %>Pfam families<% end %>
+<% content_for :curpage do %>pfam<% end %>
+
+<p class="introduction">
+The following <a href="http://pfam.sanger.ac.uk/" target="_blank">Pfam</a> domains were detected.
+</p>
+<br/>
+
+<div id="griddiv"></div>
+
+<@vardb.comments type="PAGE" identifier="pfams"/>
+
+<% content_for :scripts do %>
+var pfams=${pfamsjson.json};
+<% end %>
+
+<% content_for :onready do %>
+	var grid=new Ext.ux.vardb.Pfams({renderTo: 'griddiv', data: pfams});
+<% end %>
+
+

@@ -30,4 +30,24 @@ class AjaxController < ApplicationController
     headers["Content-Type"] = "text/xml"
     render :layout => false
   end
+  
+  def sequences
+    db = Connection.new.db("vardb")
+    coll = db.collection("sequences")
+
+    @sequences = coll.find()
+      #{:skip => params[:start].to_i, :limit => params[:limit].to_i, :sort => ["date",:desc]})
+
+    render({:json => { :sequences => @sequences, :count => @sequences.count() }.to_json()})
+  end
+  
+  def families
+    db = Connection.new.db("vardb")
+    coll = db.collection("tags")
+   
+    @families = coll.find()
+      #{:skip => params[:start].to_i, :limit => params[:limit].to_i, :sort => ["date",:desc]})
+
+    render({:json => { :families => @families, :count => @families.count() }.to_json()})
+  end
 end

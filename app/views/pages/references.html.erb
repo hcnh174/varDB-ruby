@@ -1,0 +1,12 @@
+<% content_for :title do %>References<% end %>
+<% content_for :curpage do %>references<% end %>
+
+<div id="griddiv"></div>
+
+<@vardb.comments type="PAGE" identifier="references"/>
+
+<% content_for :onready do %>
+var grid=new Ext.ux.vardb.Refs({renderTo: 'griddiv'});
+<% end %>
+
+

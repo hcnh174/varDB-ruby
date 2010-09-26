@@ -3,7 +3,11 @@ source 'http://rubygems.org'
 #added by nelson 9/23/2010
 require 'rubygems'
 require 'mongo'
-#source 'http://gemcutter.org'
+
+#added by nelson 9/26/2010
+require 'bio'
+require 'rexml/document'
+
 
 gem 'rails', '3.0.0'
 #added by nelson 9/23/2010
@@ -45,9 +49,10 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'bson_ext'
 
 # for using SASS for css generation
-gem "haml"
+gem 'haml'
 
-
+gem 'bioruby'
+#gem 'rexml'
 
 
 

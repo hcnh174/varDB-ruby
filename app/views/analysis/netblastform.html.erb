@@ -1,0 +1,26 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.layout title="Netblast" cur="netblast">
+
+<p class="introduction">
+Perform a remote BLAST search on sequences at NCBI using netblast.
+</p>
+
+<div id="formdiv"></div>
+<br/>
+
+<% content_for :onready do %>
+	var form=new Ext.ux.vardb.blast.NetBlastForm(
+	{
+		<#if results??>id: '${results.id}',</#if>
+		program: '${params.program}',
+		evalue: '${params.evalue}',
+		maxresults: ${params.maxresults?c},
+		lowcomplexity: ${params.lowcomplexity?string},
+		matrix:	'${params.matrix}',
+		<#if params.gapopen??>gapopen: ${params.gapopen?c},</#if>
+		<#if params.gapextend??>gapextend: ${params.gapextend?c},</#if>
+		collapsed: <#if results??>true<#else>false</#if>
+	});
+<% end %>
+

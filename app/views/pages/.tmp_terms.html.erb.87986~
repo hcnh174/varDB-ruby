@@ -1,0 +1,27 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.layout title="Terms" cur="terms" location={}>
+
+<div id="griddiv"></div>
+
+<@vardb.addScript>
+
+var terms =
+[
+	<#list terms as term>
+	{
+		identifier: '${term.identifier}',
+		term: '${term.term?js_string}',
+		definition: '${term.definition?js_string}',
+		ref: '${term.citation?js_string}'
+	}<#if term_has_next>,</#if>
+	</#list>
+];
+</@vardb.addScript>
+
+<@vardb.onReady>
+	new Ext.ux.vardb.Terms(terms,'griddiv');
+</@vardb.onReady>
+
+</@vardb.layout>
+

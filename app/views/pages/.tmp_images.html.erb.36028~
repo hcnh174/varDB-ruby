@@ -1,0 +1,29 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.layout title="Images" location={} cur="images">
+
+<p class="introduction">
+Images are from <a href="http://commons.wikimedia.org/wiki/Main_Page" target="_blank">WikiMedia Commons</a> and the <a href="http://phil.cdc.gov/" target="_blank">Public Health Image Library (PHIL)</a>.
+</p>
+
+<table class="data">
+<#--
+<tr>
+	<th>Image</th>
+	<th>Caption</th>
+</tr>
+-->
+<#list images as image>
+<tr>
+	<td>${image.thumbnail}</td>
+	<td class="introduction">
+		<b>${image.title}</b><br/>
+		${image.caption}<br/>
+		<span style="font-size:6pt">Permissions: ${image.permission}</span><br/>
+		<a href="${image.url}" target="_blank" style="font-size:6pt;text-decoration:none;">${image.url}</a>
+	</td>
+</tr>
+</#list>
+</table>
+
+</@vardb.layout>

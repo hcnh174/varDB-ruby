@@ -1,0 +1,23 @@
+<% content_for :title do %>Gene families<% end %>
+<% content_for :curpage do %>families<% end %>
+
+<p class="introduction">
+The following gene families were compiled based on literature searches, genome sequence projects, and Pfam profiles.
+The definition of antigenic variation differs slightly between eukaryotes, bacteria, and viruses.
+In eukaryotic species we selected families consisting of multiple paralogous genes with coordinated control of expression.
+In bacteria and viruses, we also include gene families that may include only one copy per individual but which participate in clonal variation.
+</p>
+<br/>
+
+<div id="griddiv"></div>
+
+<@vardb.comments type="PAGE" identifier="families"/>
+
+<% content_for :scripts do %>
+var data=${familiesjson.json};
+<% end %>
+
+<% content_for :onready do %>
+	new Ext.ux.vardb.Families({renderTo: 'griddiv', data: data});
+<% end %>
+

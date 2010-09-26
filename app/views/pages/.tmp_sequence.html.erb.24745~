@@ -1,0 +1,177 @@
+<% content_for :title do %>Pathogens<% end %>
+<% content_for :curpage do %>pathogens<% end %>
+<!--  -->
+
+<@vardb.layout title="Sequence: ${sequence.accession}" location={'${sequence.name}','/sequences/${sequence.identifier}.html'} lastModified=sequence>
+
+<fieldset class="padded">
+<@vardb.accessionfield obj=sequence/>
+<@vardb.field obj=sequence property="version" label="Version"/>
+<@vardb.field obj=sequence property="oldid" label="Former ID"/>
+<#if sequence.uploaded?? && sequence.uploaded><@vardb.field obj=sequence property="uploaded" suffix="?string" label="User sequence"/></#if>
+<@vardb.taxonfield sequence/>
+<@vardb.pathogenfield sequence/>
+<@vardb.familyfield sequence/>
+<@vardb.orthologfield sequence/>
+<@vardb.genomefield sequence/>
+<@vardb.chromosomefield sequence/>
+<@vardb.subgroupfield sequence/>
+<#-- <@vardb.sequencesetfield sequence/> -->
+<@vardb.field obj=sequence property="segment" label="Segment"/>
+<@vardb.field obj=sequence property="serotype" label="Serotype"/>
+<@vardb.field obj=sequence property="subtype" label="Subtype"/>
+<@vardb.field obj=sequence property="serovar" label="Serovar"/>
+<#if sequence.country??><@vardb.field obj=sequence property="country.name" label="Country"/></#if>
+<@vardb.field obj=sequence property="subregion" label="Sub region"/>
+<@vardb.field obj=sequence property="udate" suffix="?string(vardb.udatepattern)" label="Date"/>
+<@vardb.field obj=sequence property="division" label="Division"/>
+<@vardb.field obj=sequence property="natype" label="NA type"/>
+<@vardb.field obj=sequence property="isolate" label="Isolate"/>
+<@vardb.field obj=sequence property="isolation_source" label="Isolation source"/>
+<@vardb.field obj=sequence property="mol_type" label="Molecule type"/>
+<@vardb.field obj=sequence property="host" label="Host"/>
+<@vardb.field obj=sequence property="lab_host" label="Lab host"/>
+<@vardb.field obj=sequence property="specific_host" label="Specific host"/>
+<@vardb.field obj=sequence property="plasmid" label="Plasmid"/>
+<@vardb.field obj=sequence property="clone" label="Clone"/>
+<@vardb.field obj=sequence property="allele" label="Allele"/>
+<#if sequence.circular?? && sequence.circular><@vardb.field obj=sequence property="circular" suffix="?string" label="Circular"/></#if>
+<@vardb.field obj=sequence property="locus_tag" label="Locus tag"/>
+<@vardb.locationfield obj=sequence/>
+<#if sequence.pseudogene><@vardb.field obj=sequence property="pseudogene" suffix="?string" label="Pseudogene"/></#if>
+<#if sequence.truncated><@vardb.field obj=sequence property="truncated" suffix="?string" label="Truncated"/></#if>
+<@vardb.field obj=sequence property="transl_table" label="Translation table"/>
+<@vardb.field obj=sequence property="codon_start" label="Codon start"/>
+<@vardb.geneidfield obj=sequence/>
+<@vardb.field obj=sequence property="product" label="Product"/>
+<@vardb.field obj=sequence property="protein" label="Protein"/>
+<@vardb.field obj=sequence property="codedby" label="Coded by"/>
+<@vardb.field obj=sequence property="molwt" label="Molecular weight"/>
+<@vardb.proteinidfield obj=sequence/>
+<@vardb.uniprotfield obj=sequence/>
+<@vardb.field obj=sequence property="ec" label="EC"/>
+<#if sequence.conceptual><@vardb.field obj=sequence property="conceptual" suffix="?string" label="Conceptual translation"/></#if>
+<#--
+<@vardb.field obj=sequence property="seg" label="Seg residues"/>
+<@vardb.field obj=sequence property="dust" label="Dust residues"/>
+-->
+<@vardb.field obj=sequence property="comments" label="Comments"/>
+<@vardb.field obj=sequence property="notes" label="Notes"/>
+<span class="label">Tags:</span>
+	<span id="tagdiv"><#list tags as tag><@vardb.tag tag/>&nbsp;</#list></span>
+	[<a href="javascript:void(0)" onclick="addTag()">Add a tag</a> |
+	<a href="javascript:void(0)" onclick="reloadTags()">Refresh</a>]<br/>
+</fieldset>
+
+<#if sequence.method?has_content>
+<fieldset class="padded">
+<legend>Sequence detection/scoring information</legend>
+<@vardb.field obj=sequence property="method" label="Method"/>
+<@vardb.field obj=sequence property="model" label="Model"/>
+<@vardb.field obj=sequence property="score" label="Score"/>
+<@vardb.field obj=sequence property="evalue" label="E-value" suffix="?string(vardb.evaluepattern)"/>
+<@vardb.field obj=sequence property="hmmloc" label="HMM location"/>
+</fieldset>
+</#if>
+
+<div class="checkboxcontrols">
+<a href="#" onclick="Ext.ux.vardb.Cart.addSequenceToCart(${sequence.id?c})">
+Add to cart ${vardb.cartimage}
+</a> | 
+<a href="${vardb.webapp}/explorer.html" target="cart" rel="nofollow">View cart ${vardb.cartimage}</a>
+<#if sequence.sequence?has_content>
+ | <a href="${vardb.webapp}/blast/blast.html?sequence=${sequence.identifier}&type=NT" target="cart" rel="nofollow">BLAST nucleotide sequence</a>
+</#if>
+<#if sequence.translation?has_content>
+ | <a href="${vardb.webapp}/blast/blast.html?sequence=${sequence.identifier}&type=AA" target="cart" rel="nofollow">BLAST protein sequence</a>
+</#if>
+</div>
+<br/>
+
+<@vardb.sequenceFigure image/>
+
+<@vardb.domainsfield obj=sequence/>
+
+<#if sequence.translation?has_content>
+<div id="protein_sequence_panel">
+<div id="protein_sequence" class="aligned">
+<@vardb.formatsequencecolumns sequence sequence.translation/>
+</div>
+</div>
+<br/>
+</#if>
+
+<#if sequence.sequence?has_content>
+<div id="nucleotide_sequence_panel">
+<div id="nucleotide_sequence" class="aligned">
+<@vardb.formatsequencecolumns sequence sequence.sequence?lower_case/>
+</div>
+</div>
+<br/>
+<div id="gcplot"></div>
+</#if>
+
+<@vardb.references sequence.refs/>
+
+<@vardb.lastModified sequence/>
+
+<@vardb.comments type="SEQUENCE" identifier=sequence.identifier/>
+
+<% content_for :scripts do %>
+var sequence_id='${sequence.id?c}';
+var divid='tagdiv';
+
+function reloadTags()
+{
+	Ext.ux.vardb.Vardb.ajaxRequest('/tags/ajax/sequence.json',{sequence_id: sequence_id},function(json)
+	{
+		var list=[], index, tag;
+		for (index=0;index<json.tags.length;index++)
+		{
+			tag=json.tags[index];
+			list.push(Ext.ux.vardb.tags.Services.formatTag(tag));
+		}
+		Ext.DomHelper.overwrite(divid,list.join('&nbsp;'));
+	});
+}
+
+function addTag()
+{
+	var dialog=new Ext.ux.vardb.tags.ApplyTagDialog(
+	{
+		sequence_id: sequence_id,
+		callback: function(tag)
+		{
+			Ext.ux.vardb.Vardb.info('The tag has been applied to this sequence');
+			reloadTags();
+		}
+	});
+}
+
+<% end %>
+
+<% content_for :onready do %>
+	function createPanel(id,title)
+	{
+		var panel=new Ext.Panel({
+			title: title,
+			contentEl: id,
+			renderTo: id+'_panel',
+			width: Ext.get(id).getWidth(),
+			hideCollapseTool: false,
+			titleCollapse: true,
+			collapsible: true,
+			collapsed: false
+	    });
+	}
+	
+	<#if sequence.translation?has_content>
+		createPanel('protein_sequence','Translation');
+	</#if>	
+	<#if sequence.sequence?has_content>
+		createPanel('nucleotide_sequence','Nucleotide sequence');
+		var gcplot=new Ext.ux.vardb.GcChart({sequence: '${sequence.sequence}', title: 'GC Content', renderTo: 'gcplot'});
+	</#if>
+	
+<% end %>
+

@@ -1,0 +1,17 @@
+<% content_for :title do %>Pathogens<% end %>
+<% content_for :curpage do %>pathogens<% end %>
+<!--  -->
+
+<@vardb.layout title="Login" location={} cur="login">
+
+<div id="logindiv"></div>
+
+<div class="checkboxcontrols">
+	<a href="${vardb.webapp}/newuser.html" style="text-decoration:underline;">Create a new account</a> |
+	<a href="${vardb.webapp}/password.html" style="text-decoration:underline;">Forgot password?</a> |
+	<a href="${vardb.webapp}/privacy.html">Privacy policy</a>
+</div>
+
+<% content_for :onready do %>
+	new Ext.ux.vardb.Login({renderTo: 'logindiv'<#if username??>, username: '${username?js_string}'</#if>});
+<% end %>

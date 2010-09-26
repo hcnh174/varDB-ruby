@@ -3,6 +3,11 @@ Vardbruby::Application.routes.draw do
   match 'homepage', :to => 'pages#homepage'
   match 'feedback', :to => 'pages#feedback'
   match 'submitfeedback', :to => 'pages#submitfeedback'
+  match 'pathogens', :to => 'pages#pathogens'
+  match 'families', :to => 'pages#families'
+  match 'diseases', :to => 'pages#diseases'
+  match 'structures', :to => 'pages#structures'
+  match 'pfams', :to => 'pages#pfams'
   
   resources :sequences
   resources :tags

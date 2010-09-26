@@ -1,0 +1,25 @@
+<% content_for :title do %>Pathogens<% end %>
+<% content_for :curpage do %>pathogens<% end %>
+<!--  -->
+
+<@vardb.layout title="Links" location={} cur="links">
+
+<@linksOfType links 'DATABASE' 'Sequence databases'/>
+<@linksOfType links 'DISEASES' 'Infectious diseases'/>
+<@linksOfType links 'TOOLS' 'Bioinformatics tools and resources'/>
+<@linksOfType links 'T_CELL_EPITOPE_PREDICTION' 'Tools for T-cell epitope prediction'/>
+<@linksOfType links 'B_CELL_EPITOPE_PREDICTION' 'Tools for B-cell epitope prediction'/>
+
+
+
+<#macro linksOfType links type title>
+<div class="subheading" style="color:black;">${title}</div>
+<ul class="bulleted">
+	<#list links as link>
+	<#if link.type==type>
+		<li><a href="${link.href}" target="${link.target}"<#if link.description??> title="${link.description}"</#if>>${link.text}</a></li>
+	</#if>
+	</#list>
+</ul>
+<br/>
+</#macro>

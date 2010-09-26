@@ -1,0 +1,25 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.layout title="PSSM search results" location={'PSSM form':'/analysis/pssm.html'} cur="pssm">
+
+<p class="introduction">
+Results of PSSM search.
+</p>
+
+<@vardb.showErrors/>
+<b>Locations</b><br/>
+<#list results?keys as name>${name}: ${results[name]}<br/></#list>
+
+<% content_for :onready do %>
+<#--
+	var form=new Ext.ux.vardb.blast.BlastClustForm(
+	{
+		renderTo: 'formdiv',
+		protein: ${params.protein?string},
+		minimumLength: ${params.minimumLength},
+		similarityThreshold: ${params.similarityThreshold?c}
+	});
+-->
+<% end %>
+
+

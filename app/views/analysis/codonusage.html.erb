@@ -1,0 +1,66 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.layout title="Codon Usage" cur="codonusage" shownavigation=false>
+
+<div id="tablediv"></div>
+
+<br/>
+<br/>
+
+<b>Frequency by column</b><br/>
+<ul class="bulleted">
+<li><a href="#codons">Codon frequency by column</a></li>
+<li><a href="#cysteines">Cysteine codon frequency by column</a></li>
+<li><a href="#aminoacids">Amino acid frequency by column</a></li>
+<li><a href="#nucleotides">Nucleotide frequency by column</a></li>
+</ul>
+
+<br/>
+<a name="codons">Codons<br/>
+<div>
+${columncounts.codons}
+</div>
+
+<br>
+<hr/>
+<br>
+<a name="cysteines">Cysteines<br/>
+<div>
+${columncounts.cysteines}
+</div>
+
+<br>
+<hr/>
+<br>
+<a name="aminoacids">Amino acids</a><br/>
+<div>
+${columncounts.aminoAcids}
+</div>
+
+<br>
+<hr/>
+<br>
+<a name="nucleotides">Nucleotides</a><br/>
+<div>
+${columncounts.nucleotides}
+</div>
+
+<% content_for :scripts do %>
+
+var codonusage=${codonusagejson.json};
+
+<% end %>
+
+<% content_for :onready do %>
+
+var table=new Ext.ux.vardb.CodonUsageTable(
+{
+	renderTo: 'tablediv',
+	data: codonusage
+});
+
+<% end %>
+
+
+
+

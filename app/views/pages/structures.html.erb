@@ -1,0 +1,31 @@
+<% content_for :title do %>PDB Structures<% end %>
+<% content_for :curpage do %>structures<% end %>
+
+<div id="griddiv"></div>
+
+<@vardb.comments type="PAGE" identifier="structures"/>
+
+<% content_for :scripts do %>
+var structures=
+{
+	rows:
+	[
+		<#list structures as structure>
+		{
+			id: ${structure.id?c},
+			identifier: '${structure.identifier?js_string}',
+			name: '${structure.name?js_string}',
+			description: '${structure.description?default('')?js_string}',
+			resolution: '${structure.resolution?default('')?js_string}',
+			technique: '${structure.technique?default('')?js_string}',
+			numchains: ${structure.numchains?c},
+			numsequences: ${structure.numsequences?c}
+		}<#if structure_has_next>,</#if>
+		</#list>
+	]
+};
+<% end %>
+
+<% content_for :onready do %>
+	var grid=new Ext.ux.vardb.Structures({renderTo: 'griddiv', data: structures});
+<% end %>

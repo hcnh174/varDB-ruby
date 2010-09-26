@@ -1,0 +1,19 @@
+<#import "/global.ftl" as vardb>
+<#import "/spring.ftl" as spring/>
+
+<@vardb.layout title="Variability" cur="variability">
+
+<p class="introduction">
+This tool uses several information content metrics to calculate the degree of sequence variability within a multiple sequence alignment.
+It currently it provides a subset of the features provided on the <a href="http://imed.med.ucm.es/PVS/" target="_blank">Protein Variability Server</a>.
+</p>
+<br/>
+
+<@vardb.showErrors/>
+<div id="formdiv"></div>
+
+<% content_for :onready do %>
+new Ext.ux.vardb.VariabilityForm({renderTo: 'formdiv'});
+<% end %>
+
+

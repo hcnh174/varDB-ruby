@@ -1,0 +1,23 @@
+<#import "/global.ftl" as vardb>
+
+<@vardb.layout title="BLASTClust" location={'BLASTClust':'/analysis/blastclust.html'} cur="blastclust">
+
+<p class="introduction">
+BLASTClust is used to cluster protein or nucleotide sequences based on blastp or Megablast pairwise similarities, respectively. 
+</p>
+
+<@vardb.showErrors/>
+<div id="formdiv"></div>
+<br/>
+
+<% content_for :onready do %>
+	var form=new Ext.ux.vardb.blast.BlastClustForm(
+	{
+		renderTo: 'formdiv',
+		protein: ${params.protein?string},
+		minimumLength: ${params.minimumLength},
+		similarityThreshold: ${params.similarityThreshold?c}
+	});
+<% end %>
+
+
