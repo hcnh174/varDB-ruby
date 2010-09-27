@@ -1,13 +1,9 @@
-class User
-  include MongoMapper::Document
-  
-  #attr_accessor :name, :email
-  
-  key :username, String
-  key :first_name, String
-  key :last_name, String
-  key :email, String
-  key :affiliation, String
-  timestamps!
+class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :lockable and :timeoutable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
 
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation
 end
