@@ -7,6 +7,7 @@ require 'mongo'
 #added by nelson 9/26/2010
 require 'bio'
 require 'rexml/document'
+require 'rails-extjs-direct'
 
 
 gem 'rails', '3.0.0'
@@ -52,7 +53,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 
 gem 'bioruby'
-#gem 'rexml'
-
+gem 'rails-extjs-direct'
 
 

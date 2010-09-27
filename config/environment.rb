@@ -13,3 +13,4 @@ Vardbruby::Application.initialize!
 #config.frameworks -= [ :active_record, :active_resource ]
 
 require 'mongo'
+require 'rails-extjs-direct'

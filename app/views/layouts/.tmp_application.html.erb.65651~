@@ -3,8 +3,8 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title><%= title %></title>
-	<link rel="shortcut icon" href="images/favicon.ico"/>
+	<title><%= yield :title %></title>
+	<link rel="shortcut icon" href="/images/favicon.ico"/>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />	
 	<meta name="description" content="Database of gene families involved in antigenic variation"/>	
 	<meta name="keywords" content="antigenic variation, infectious disease, genome, bioinformatics"/>
@@ -13,6 +13,7 @@
 	<%= stylesheet_link_tag "extensions.css" %>
 	<%= stylesheet_link_tag "global.css" %>
 	<%= csrf_meta_tag %>
+	<%= yield :head %>
 </head>
 
 <body>
@@ -28,7 +29,7 @@
 		<div id="yui-main">
 			<div class="yui-b">
 			<%= render 'layouts/breadcrumbs' %>
-			<div class="heading"><%= title %></div>
+			<div class="heading"><%= yield :title %></div>
 			<%= yield %>
 			<br/>
 			</div>
@@ -43,6 +44,12 @@
 
 <script type="text/javascript">
 var navigation = <%= render 'layouts/navigation' %>;
+
+<%= yield :scripts %>
+</script>
+
+<script type="text/javascript">
+
 <!--
 Ext.onReady(function()
 {
@@ -53,10 +60,9 @@ Ext.onReady(function()
 		renderTo: 'mainmenudiv'
 	});
 
-	new nelson.vardb.widgets.Navigation({renderTo: 'nav', data: navigation, cur: '<%= @curpage %>'});
+	new nelson.vardb.widgets.Navigation({renderTo: 'nav', data: navigation, cur: '<%= yield :curpage %>'});
 	
-	if (doOnReady)
-		{doOnReady();}		
+	<%= yield :onready %>
 });
 // -->
 </script>

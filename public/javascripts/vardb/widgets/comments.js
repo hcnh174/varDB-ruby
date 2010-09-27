@@ -9,8 +9,8 @@ nelson.vardb.widgets.Comments = Ext.extend(Ext.Panel,
 	initComponent:function()
 	{
 		var self=this;
-		if (!this.type)
-			{throw 'nelson.vardb.widgets.Comments: type not set';}
+		//if (!this.type)
+		//	{throw 'nelson.vardb.widgets.Comments: type not set';}
 		if (!this.identifier)
 			{throw 'nelson.vardb.widgets.Comments: identifier not set';}
 			
@@ -32,11 +32,11 @@ nelson.vardb.widgets.Comments = Ext.extend(Ext.Panel,
 
 		var store=new Ext.data.Store(
 		{
-			url: vardb.webapp+'/ajax/comments',//
+			url: vardb.webapp+'/ajax/comments',
 			reader: reader,
 			remoteSort: true,
 			sortInfo: {field: 'date', direction: 'DESC'},
-			baseParams: {type: this.type, identifier: this.identifier}
+			baseParams: {identifier: this.identifier}
 		});
 		
 		// Custom rendering Template for the View
@@ -97,7 +97,6 @@ nelson.vardb.widgets.Comments = Ext.extend(Ext.Panel,
 		var self=this;
 		var win=new nelson.vardb.widgets.CommentWindow(
 		{
-			type: self.type,
 			identifier: self.identifier,
 			callback: function()
 			{

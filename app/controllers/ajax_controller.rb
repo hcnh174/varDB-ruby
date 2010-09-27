@@ -1,14 +1,31 @@
 class AjaxController < ApplicationController
   include Mongo
-  
+
+  def categories
+    db = Connection.new.db("vardb")
+    coll = db.collection("tags")
+
+    @categories =
+    {
+      :pathogens => coll.find({"tagtype" => "pathogen"}, {:sort => ["name",:asc]}),
+      :families => coll.find({"tagtype" => "family"}, {:sort => ["name",:asc]}),
+      :diseases=> coll.find({"tagtype" => "disease"}, {:sort => ["name",:asc]})
+    }
+    
+    render({:json => @categories})
+  end 
+ 
   def comments
 
-    db = Connection.new.db("vardb")
-    coll = db.collection("comments")
+    #db = Connection.new.db("vardb")
+    #coll = db.collection("comments")
 
-    @comments = coll.find({"type" => params[:type], "identifier" => params[:identifier]},
-      {:skip => params[:start].to_i, :limit => params[:limit].to_i, :sort => ["date",:desc]})
-
+    #@comments = coll.find({"identifier" => params[:identifier]},
+    #  {:skip => params[:start].to_i, :limit => params[:limit].to_i, :sort => ["date",:desc]})
+    #render({:json => { :comments => @comments, :count => @comments.count() }.to_json()})
+ 
+    
+    @comments = Comment.where(:identifier => params[:identifier]).sort(:date.desc).skip(params[:start].to_i).limit(params[:limit].to_i).all
     render({:json => { :comments => @comments, :count => @comments.count() }.to_json()})
   end
   

@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   include Mongo
   #include Bio
+  #include Rails::ExtJS::Direct::Controller
+  #direct_actions :foo, :bar
   
   def homepage
     #puts current_user
@@ -18,6 +20,14 @@ class PagesController < ApplicationController
     #seq = Sequence::NA.new("atgcatgcaaaa")
     #puts seq
     
+    db = Connection.new.db("vardb")
+    coll = db.collection("tags")
+
+    @pathogens = coll.find({"tagtype" => "pathogen"}, {:sort => ["name",:asc]})
+    @families = coll.find({"tagtype" => "family"}, {:sort => ["name",:asc]})
+    @diseases = coll.find({"tagtype" => "disease"}, {:sort => ["name",:asc]})
+    
+    @categoriesjson = { :pathogens => @pathogens, :families => @families, :diseases=> @diseases}.to_json()
   end
   
   def feedback
@@ -38,7 +48,13 @@ class PagesController < ApplicationController
   def pathogen
   end
 
-  def families  
+  def families
+    db = Connection.new.db("vardb")
+    coll = db.collection("tags")
+
+    @families = coll.find({"tagtype" => "family"}, {:sort => ["name",:asc]})
+
+    #render({:json => { :families => @families, :count => @families.count() }.to_json()})
   end
 
   def family

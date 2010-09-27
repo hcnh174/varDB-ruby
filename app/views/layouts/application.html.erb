@@ -54,14 +54,9 @@ var navigation = <%= render 'layouts/navigation' %>;
 Ext.onReady(function()
 {
 	nelson.vardb.Vardb.onReady();
-
-	new nelson.vardb.widgets.MainMenu(
-	{
-		renderTo: 'mainmenudiv'
-	});
-
+	new nelson.vardb.widgets.MainMenu({renderTo: 'mainmenudiv'});
 	new nelson.vardb.widgets.Navigation({renderTo: 'nav', data: navigation, cur: '<%= yield :curpage %>'});
-	
+	var commentsgrid=new nelson.vardb.widgets.Comments({renderTo: 'commentsdiv', identifier: '<%= yield :comments %>'});
 	<%= yield :onready %>
 });
 // -->

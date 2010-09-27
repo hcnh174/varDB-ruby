@@ -1,3 +1,7 @@
+<% content_for :title do %>varDB: Antigenic variation database<% end %>
+<% content_for :curpage do %>homepage<% end %>
+<% content_for :comments do %>page:homepage<% end %>
+
 <div class="introduction">
 Many phylogenetically diverse organisms use <a href="pages/antigenicvariation.html">antigenic variation</a> to avoid recognition by the immune system. 
 varDB was developed to serve as a centralized database of antigenically variable protein families from a range of pathogenic organisms. 
@@ -38,8 +42,9 @@ We are grateful to the <a href="http://www.stint.se/en/">STINT Foundation</a>, t
 <br/>
 <div id="commentsdiv"></div>
 
-<script type="text/javascript">
-//var categories = ${categories.json};
+
+<% content_for :scripts do %>
+
 var categories = {"families":[{"identifier":"families","name":"All families"},{"identifier":
       "anaplasma.marginale.msp2","name":
       "Anaplasma marginale msp2 (437 sequences)"},{"identifier":
@@ -209,23 +214,20 @@ var categories = {"families":[{"identifier":"families","name":"All families"},{"
       "identifier":"tuberculosis","name":"Tuberculosis (52 sequences)"}],
   "statistics":{"ntsequences":83878,"aasequences":46216}}
 ;
+<% end %>
 
-</script>
+<% content_for :onready do %>
 
-<script type="text/javascript">
-<!--
-function doOnReady()
-{
+	/*
 	var commentsgrid=new nelson.vardb.widgets.Comments(
 	{
 		renderTo: 'commentsdiv',
 		type: 'PAGE',
 		identifier: 'homepage'
 	});
-
+	*/
+	
 	new nelson.vardb.widgets.Announcements({renderTo: 'announcements'});
 	new nelson.vardb.widgets.BrowseByCategory({renderTo: 'browse_by_category', data: categories});
-}
-// -->
-</script>
+<% end %>
 

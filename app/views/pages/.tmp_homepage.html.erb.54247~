@@ -1,6 +1,5 @@
 <% content_for :title do %>varDB: Antigenic variation database<% end %>
 <% content_for :curpage do %>homepage<% end %>
-<% content_for :comments do %>page:homepage<% end %>
 
 <div class="introduction">
 Many phylogenetically diverse organisms use <a href="pages/antigenicvariation.html">antigenic variation</a> to avoid recognition by the immune system. 
@@ -44,7 +43,7 @@ We are grateful to the <a href="http://www.stint.se/en/">STINT Foundation</a>, t
 
 
 <% content_for :scripts do %>
-
+//var categories = ${categories.json};
 var categories = {"families":[{"identifier":"families","name":"All families"},{"identifier":
       "anaplasma.marginale.msp2","name":
       "Anaplasma marginale msp2 (437 sequences)"},{"identifier":
@@ -218,32 +217,14 @@ var categories = {"families":[{"identifier":"families","name":"All families"},{"
 
 <% content_for :onready do %>
 
-	/*
 	var commentsgrid=new nelson.vardb.widgets.Comments(
 	{
 		renderTo: 'commentsdiv',
 		type: 'PAGE',
 		identifier: 'homepage'
 	});
-	*/
-	
+
 	new nelson.vardb.widgets.Announcements({renderTo: 'announcements'});
 	new nelson.vardb.widgets.BrowseByCategory({renderTo: 'browse_by_category', data: categories});
-	
-	
-	Ext.Direct.addProvider(
-	{
-	    url: '/direct',
-	    type: 'remoting',
-	    actions:
-		{
-	        Direct:
-			[
-	            {name: 'test', len: 1}
-	        ]
-	    }
-	});
-	
-	Direct.test({name: "test"}); 
 <% end %>
 
