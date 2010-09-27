@@ -23,6 +23,9 @@ git push
 
 ren *.ftl *.html.erb
 
-
-
 git pull
+
+set MONGODB_HOME=d:\packages\mongodb-win32-i386-1.6.2
+mongod --bind_ip 127.0.0.1 --logpath %MONGODB_HOME%\logs\log.txt --logappend --dbpath %MONGODB_HOME%\data --directoryperdb --install
+rem mongod --service
+net start MongoDB

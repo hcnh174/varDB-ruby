@@ -54,5 +54,9 @@ gem 'haml'
 
 gem 'bioruby'
 gem 'rails-extjs-direct'
-gem 'devise', '1.1.rc1'
+#gem 'devise', '1.1.rc1'
+#gem 'devise', '1.1'
+gem 'devise', '~> 1.1.1'
+gem 'mm-devise', '>= 1.1.0'
+
 

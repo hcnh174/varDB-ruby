@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   #include Rails::ExtJS::Direct::Controller
   #direct_actions :foo, :bar
   
+  before_filter :authenticate_user!
+
+  
   def homepage
     #puts current_user
     
