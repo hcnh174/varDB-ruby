@@ -9,6 +9,9 @@ gem install bson_ext
 rails server
 rails console
 rails generate controller pages
+rake routes
+
+rails generate devise:views
 
 git config --global core.autocrlf false
 git config --global user.name ""
@@ -29,3 +32,4 @@ set MONGODB_HOME=d:\packages\mongodb-win32-i386-1.6.2
 mongod --bind_ip 127.0.0.1 --logpath %MONGODB_HOME%\logs\log.txt --logappend --dbpath %MONGODB_HOME%\data --directoryperdb --install
 rem mongod --service
 net start MongoDB
+
