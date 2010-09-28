@@ -1,15 +1,33 @@
 module XmlLoader
   include Mongo
   
-  def XmlLoader.loadxmlfile(path)
-    xml=REXML::Document.new(File.open(path))
-    #puts "Root element: #{xml.root.name}"
-    xml.elements.each('vardb/family') do |ele|
-      createfamily(ele)
+  def XmlLoader.loadXmlFolder(folder) #"c:/projects/vardb/data/"
+    excludes = [".svn"]
+    Find.find(folder) do |path|      
+      if FileTest.directory?(path)
+        if excludes.include?(File.basename(path))
+          Find.prune       # Don't look any further into this directory.
+        else
+          next
+        end
+      else
+        if File.extname(path) == ".xml"
+            puts path
+            loadXmlFile(path)
+        end
+      end
     end
   end
   
-  def XmlLoader.createfamily(element)
+  def XmlLoader.loadXmlFile(path)
+    xml=REXML::Document.new(File.open(path))
+    #puts "Root element: #{xml.root.name}"
+    xml.elements.each('vardb/family') do |ele|
+      createFamily(ele)
+    end
+  end
+  
+  def XmlLoader.createFamily(element)
     params={
       "tagtype" => "family",
       "identifier" => element.attributes["identifier"],
