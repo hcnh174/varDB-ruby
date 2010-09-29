@@ -10,6 +10,12 @@ Vardbruby::Application.routes.draw do
   match 'diseases', :to => 'pages#diseases'
   match 'structures', :to => 'pages#structures'
   match 'pfams', :to => 'pages#pfams'
+  match 'antigenicvariation', :to => 'pages#antigenicvariation'
+  match 'references', :to => 'pages#references'
+  match 'terms', :to => 'pages#terms'
+  match 'database', :to => 'pages#database'
+  match 'links', :to => 'pages#links'
+  match 'tutorials', :to => 'pages#tutorials'
   
   resources :sequences
   resources :tags

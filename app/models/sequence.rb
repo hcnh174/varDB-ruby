@@ -1,6 +1,7 @@
 class Sequence
   include MongoMapper::Document
 
+  key :identifier, String
   key :accession, String
   key :description, String  
 
@@ -45,7 +46,8 @@ class Sequence
   key :sequenceset, String
   key :genome, String
   key :chromosome, String
-    
-  #protected Set<String> tags=new LinkedHashSet<String>(), String
+  
+  key :tags, Array
+  key :refs, Array
 
 end

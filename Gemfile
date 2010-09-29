@@ -52,7 +52,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # for using SASS for css generation
 gem 'haml'
 
-gem 'bioruby'
+gem 'bio'
 gem 'rails-extjs-direct'
 #gem 'devise', '1.1.rc1'
 #gem 'devise', '1.1'

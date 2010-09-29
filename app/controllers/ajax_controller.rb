@@ -49,22 +49,23 @@ class AjaxController < ApplicationController
   end
   
   def sequences
-    db = Connection.new.db("vardb")
-    coll = db.collection("sequences")
-
-    @sequences = coll.find()
-      #{:skip => params[:start].to_i, :limit => params[:limit].to_i, :sort => ["date",:desc]})
-
+    @sequences = Sequence.all()
     render({:json => { :sequences => @sequences, :count => @sequences.count() }.to_json()})
   end
   
   def families
-    db = Connection.new.db("vardb")
-    coll = db.collection("tags")
-   
-    @families = coll.find()
-      #{:skip => params[:start].to_i, :limit => params[:limit].to_i, :sort => ["date",:desc]})
-
+    @families = Family.all()
     render({:json => { :families => @families, :count => @families.count() }.to_json()})
+  end
+  
+  def orthologs
+    orthologs = Ortholog.all()
+    render({:json => { :orthologs => @orthologs, :count => @orthologs.count() }.to_json()})
+  end
+  
+  def terms
+    @terms = Term.all()
+    puts @terms
+    render({:json => { :terms => @terms, :count => @terms.count() }.to_json()})
   end
 end

@@ -86,4 +86,16 @@ class PagesController < ApplicationController
     coll = db.collection("sequences")
     @sequence = coll.find_one("accession" => params[:accession])
   end
+
+  def antigenicvariation
+  end
+
+  def references
+  end
+
+  def terms
+  end
+
+  def database
+  end
 end

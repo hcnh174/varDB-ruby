@@ -1,4 +1,4 @@
-class Family < Tag
+class Family < Resource
   
   key :pathogen, String
   key :ortholog, String

@@ -33,3 +33,4 @@ mongod --bind_ip 127.0.0.1 --logpath %MONGODB_HOME%\logs\log.txt --logappend --d
 rem mongod --service
 net start MongoDB
 
+@terms = MongoMapper.database.collection("terms").find()
