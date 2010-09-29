@@ -31,7 +31,7 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     bcrypt-ruby (2.1.2)
-    bioruby (0.6.4)
+    bio (1.4.0)
     bson (1.0.9)
     bson_ext (1.0.9)
     builder (2.1.2)
@@ -106,7 +106,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bioruby
+  bio
   bson_ext
   devise (~> 1.1.1)
   haml

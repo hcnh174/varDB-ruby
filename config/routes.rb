@@ -1,4 +1,6 @@
 Vardbruby::Application.routes.draw do
+  get "svg_controller/show"
+
   devise_for :users
 
   root :to => 'pages#homepage'
