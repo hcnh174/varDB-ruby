@@ -1,0 +1,91 @@
+grammar Query
+	
+	rule andexpression
+		term andstr term {
+			def content
+				filter = CompositeFilter.new
+				filter.left =  elements[0].content
+				filter.operator =  'AND'
+				filter.right =  elements[2].content
+				filter
+			end
+		}
+	end
+	
+	rule orexpression
+		term andstr term {
+			def content
+				filter = CompositeFilter.new
+				filter.left =  elements[0].content
+				filter.operator =  'OR'
+				filter.right =  elements[2].content
+				filter
+			end
+		}
+	end
+	
+	rule term
+		identifier operator value {		
+			def content
+				filter = ElementaryFilter.new
+				filter.field =  elements[0].text_value
+				filter.operator =  elements[1].text_value
+				filter.value =  elements[2].text_value
+				filter
+			end
+		}
+	end
+	
+	rule identifier
+		letter (letter / digit / dot)*
+	end
+	
+	rule operator
+		'=' / '!=' / '>=' / '>' / '<=' / '<'
+	end
+	
+	rule value
+  		quotedstring / string
+  	end
+
+	rule quotedstring
+		'"' [^"]* '"' {
+			def text_value
+				elements[1].text_value
+			end
+		}
+	end
+	
+	rule string
+		(letter / digit / dot)+
+	end
+	
+	rule letter
+		[a-zA-Z]
+	end
+	
+	rule digit
+		[0-9]
+	end
+	
+	rule dot
+		'.'
+	end
+	
+	rule whitespace
+		[\s]+
+	end
+	
+	rule andstr
+		whitespace ('AND' / 'and') whitespace
+	end
+	
+	rule orstr
+		whitespace ('OR' / 'or') whitespace
+	end
+	
+	rule notstr
+		whitespace ('NOT' / 'not') whitespace
+	end
+	
+end
