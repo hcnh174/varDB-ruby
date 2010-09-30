@@ -1,0 +1,123 @@
+grammar Query
+
+	rule expr
+		orexpression {
+			def content
+				elements[0]
+			end
+		}
+	end
+	
+	rule orexpression
+		andexpression ([\s]+ 'OR' [\s]+ andexpression)* {
+			def content
+				node = Hash.new
+				node['OR'] =  elements
+				node
+			end
+		}
+	end
+	
+	rule andexpression
+		notexpression ([\s]+ 'AND' [\s]+ notexpression)* {
+			def content
+				node = Hash.new
+				node['AND'] =  elements
+				node
+			end
+		}
+	end
+	
+	rule notexpression
+		([\s]+ 'NOT' [\s]+)? atom {
+			def content
+				elements
+			end
+		}
+	end
+	
+	rule atom
+		term / '(' orexpression ')' {
+			def content
+				elements
+			end
+		}
+	end
+
+	rule term
+		identifier operator value {
+			def content
+				node = Hash.new
+				node['identifier'] =  elements[0]
+				node['operator'] =  elements[1]
+				node['value'] =  elements[2]
+				node
+			end
+		}
+	end
+	
+	rule identifier
+		letter (letter / digit / dot)* {
+			def content
+				elements
+			end
+		}
+	end
+	
+	rule operator
+		'=' / '!=' / '>=' / '>' / '<=' / '<' {
+			def content
+				elements
+			end
+		}
+	end
+	
+	rule value
+  		quotedstring / string {
+			def content
+				elements
+			end
+		}
+  	end
+
+	rule quotedstring
+		'"' [^"]* '"' {
+			def content
+				puts "inside a quoted string: #{elements[1]}"
+				elements
+			end
+		}
+	end
+
+	rule string
+		(letter / digit / dot)+ {
+			def content
+				elements
+			end
+		}
+	end
+	
+	rule letter
+		[a-zA-Z] {
+			def content
+				elements
+			end
+		}
+	end
+	
+	rule digit
+		[0-9] {
+			def content
+				elements
+			end
+		}
+	end
+	
+	rule dot
+		'.' {
+			def content
+				elements
+			end
+		}
+	end
+end

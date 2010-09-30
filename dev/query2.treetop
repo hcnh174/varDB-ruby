@@ -1,0 +1,159 @@
+grammar Query
+	
+	rule expr
+		orexpression {
+			def content
+				elements[0].content
+			end
+		}
+	end
+	
+	rule orexpression
+		andexpression (orstr andexpression)* {
+			def content
+				node = Hash.new
+				node['OR'] =  elements
+				node
+			end
+		}
+	end
+	
+	rule andexpression
+		notexpression (andstr notexpression)* {
+			def content
+				node = Hash.new
+				node['AND'] =  elements
+				node
+			end
+		}
+	end
+	
+	rule notexpression
+		notstr? atom {
+			def content
+				elements
+			end
+		}
+	end
+	
+	rule atom
+		term / parenexpression {
+			def content
+				elements
+			end
+		}
+	end
+	
+	rule parenexpression
+		'(' orexpression ')' {
+			def content
+				elements[1]
+			end
+		}
+	end
+	
+	rule term
+		identifier operator value {
+			def content
+				node = Hash.new
+				node['identifier'] =  elements[0].content
+				node['operator'] =  elements[1].content
+				node['value'] =  elements[2].content
+				node
+			end
+		}
+	end
+	
+	rule identifier
+		letter (letter / digit / dot)* {
+			def content
+				text_value
+			end
+		}
+	end
+	
+	rule operator
+		('=' / '!=' / '>=' / '>' / '<=' / '<') {
+			def content
+				text_value
+			end
+		}
+	end
+	
+	rule value
+  		quotedstring / string
+  	end
+
+	rule quotedstring
+		'"' [^"]* '"' {
+			def content
+				elements[1].text_value
+			end
+		}
+	end
+	
+	rule string
+		(letter / digit / dot)+ {
+			def content
+				text_value
+			end
+		}
+	end
+	
+	rule letter
+		[a-zA-Z] {
+			def content
+				text_value
+			end
+		}
+	end
+	
+	rule digit
+		[0-9] {
+			def content
+				text_value
+			end
+		}
+	end
+	
+	rule dot
+		'.' {
+			def content
+				text_value
+			end
+		}
+	end
+	
+	rule whitespace
+		[\s]+ {
+			def content
+				''
+			end
+		}
+	end
+	
+	rule andstr
+		whitespace ('AND' / 'and') whitespace {
+			def content
+				''
+			end
+		}
+	end
+	
+	rule orstr
+		whitespace ('OR' / 'or') whitespace {
+			def content
+				''
+			end
+		}
+	end
+	
+	rule notstr
+		whitespace ('NOT' / 'not') whitespace {
+			def content
+				''
+			end
+		}
+	end
+	
+end

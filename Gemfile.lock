@@ -40,7 +40,7 @@ GEM
       warden (~> 0.10.7)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    haml (3.0.18)
+    haml (3.0.21)
     i18n (0.4.1)
     jnunemaker-validatable (1.8.4)
       activesupport (>= 2.3.4)
@@ -115,3 +115,4 @@ DEPENDENCIES
   rails (= 3.0.0)
   rails-extjs-direct
   sqlite3-ruby
+  treetop

@@ -1,25 +1,26 @@
 source 'http://rubygems.org'
 
-#added by nelson 9/23/2010
+#added by nelson
 require 'rubygems'
 require 'mongo'
-
-#added by nelson 9/26/2010
 require 'bio'
 require 'rexml/document'
 require 'rails-extjs-direct'
 
-
 gem 'rails', '3.0.0'
-#added by nelson 9/23/2010
-gem "bson_ext"
-gem "mongo_mapper"
+
+#nelson
+gem 'bson_ext'
+gem 'mongo_mapper'
+gem 'haml' # for using SASS for css generation
+gem 'bio'
+gem 'rails-extjs-direct'
+gem 'devise', '~> 1.1.1'
+gem 'mm-devise', '>= 1.1.0'
+gem 'treetop' 
 
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3-ruby', :require => 'sqlite3'
+#gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -42,21 +43,3 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
-
-#for using MongoDB
-#require 'mongo'
-#gem 'mongo'
-#gem 'bson'
-#gem 'bson_ext'
-
-# for using SASS for css generation
-gem 'haml'
-
-gem 'bio'
-gem 'rails-extjs-direct'
-#gem 'devise', '1.1.rc1'
-#gem 'devise', '1.1'
-gem 'devise', '~> 1.1.1'
-gem 'mm-devise', '>= 1.1.0'
-
-

@@ -11,6 +11,10 @@ rails console
 rails generate controller pages
 rake routes
 
+
+gem install devise
+rails generate devise:install
+rails generate devise User
 rails generate devise:views
 
 git config --global core.autocrlf false
@@ -34,3 +38,8 @@ rem mongod --service
 net start MongoDB
 
 @terms = MongoMapper.database.collection("terms").find()
+
+bundle show treetop
+
+#create rb parser file
+tt query.treetop

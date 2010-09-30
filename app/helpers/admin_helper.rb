@@ -2,40 +2,40 @@ module AdminHelper
 
   # xml_loader
 
-  def loadXmlFolder(folder) #"c:/projects/vardb/data/"
-    filenames = getFilesOfType(folder,".xml")
+  def load_xml_folder(folder) #"c:/projects/vardb/data/"
+    filenames = get_files_of_type(folder,".xml")
     filenames.each do |filename|
       puts filename
-      loadXmlFile(filename)
+      load_xml_file(filename)
     end
   end
   
-  def loadXmlFile(path)
+  def load_xml_file(path)
     xml=REXML::Document.new(File.open(path))
     #puts "Root element: #{xml.root.name}"
     xml.root.elements.each do |child|
       if %w{pathogen virus bacteria fungus protist animal}.include?(child.name)
-        createPathogen(child)        
+        create_pathogen(child)        
       elsif child.name=='family'
-        createFamily(child)
+        create_family(child)
       elsif child.name=='disease'
-        createDisease(child)
+        create_disease(child)
       elsif child.name=='ortholog'
-        createOrtholog(child)
+        create_ortholog(child)
       elsif child.name=='ref'
-        createRef(child)
+        create_ref(child)
       elsif child.name=='source'
-        createSource(child)
+        create_source(child)
       elsif child.name=='term'
-        createTerm(child)
+        create_term(child)
       end
     end
   end
   
-  def createPathogen(element)
-    params = createHashFromElements(element)
+  def create_pathogen(element)
+    params = hash_from_elements(element)
     params[:identifier] = element.attributes["identifier"]
-    params[:refs] = createArrayFromSimpleTextElements(element)
+    params[:refs] = array_from_elements(element)
     if element.name=="virus"
       Virus.create(params)   
     elsif element.name=="bacteria"
@@ -51,56 +51,56 @@ module AdminHelper
     end
   end
   
-  def createFamily(element)
-    params = createHashFromElements(element)
+  def create_family(element)
+    params = hash_from_elements(element)
     params[:identifier] = element.attributes["identifier"]
     params[:pathogen] = element.attributes["pathogen"]
     Family.create(params)    
   end
   
-  def createDisease(element)
-    params = createHashFromElements(element)
+  def create_disease(element)
+    params = hash_from_elements(element)
     params[:identifier] = element.attributes["identifier"]
     Disease.create(params)    
   end
   
-  def createOrtholog(element)
-    params = createHashFromElements(element)
+  def create_ortholog(element)
+    params = hash_from_elements(element)
     params[:identifier] = element.attributes["identifier"]
     Ortholog.create(params)    
   end
   
-  def createRef(element)
-    params = createHashFromElements(element)
+  def create_ref(element)
+    params = hash_from_elements(element)
     params[:identifier] = element.attributes["identifier"]
     Ref.create(params)    
   end
   
-  def createSource(element)
-    params = createHashFromElements(element)
+  def create_source(element)
+    params = hash_from_elements(element)
     params[:identifier] = element.attributes["identifier"]
     Source.create(params)
   end
   
-  def createTerm(element)
-    params = createHashFromElements(element)
+  def create_term(element)
+    params = hash_from_elements(element)
     params[:identifier] = element.attributes["identifier"]
     Term.create(params)
   end
 
   #sequence_loader
   
-  def loadSequenceFolder(folder)
+  def load_sequence_folder(folder)
     #puts "loadSequenceFolder #{folder}"
-    filenames = getFilesOfType(folder,".txt")
+    filenames = get_files_of_type(folder,".txt")
     #puts "filenames #{filenames}"
     filenames.each do |filename|
       puts filename
-      loadSequenceFile(filename)
+      load_sequence_file(filename)
     end
   end
   
-  def loadSequenceFile(filename)
+  def load_sequence_file(filename)
     #puts "loadSequenceFile: #{filename}"
     isHeader=true
     fields = nil
@@ -119,13 +119,13 @@ module AdminHelper
           return
         end
         values=line.split("\t")
-        params=createHashFromArrays(fields,values)
+        params=hash_from_arrays(fields,values)
         createSequence(params)
       end
     end
   end
   
-  def createSequence(params)
+  def create_sequence(params)
     puts params.to_s
     Sequence.create(params)    
   end
@@ -134,8 +134,8 @@ module AdminHelper
   
   # vardb_utils
   
-  def getFilesOfType(folder,type)
-    puts "getFilesOfType"
+  def get_files_of_type(folder,type)
+    puts "get_files_of_type"
     filenames = Array.new
     excludes = [".svn"]
     Find.find(folder) do |path|
@@ -154,7 +154,7 @@ module AdminHelper
     return filenames
   end
   
-  def createHashFromArrays(fields,values)
+  def hash_from_arrays(fields,values)
     puts "******************"
     puts "fields #{fields}"
     puts "values #{values}"
@@ -176,7 +176,13 @@ module AdminHelper
     params
   end
   
-  def createHashFromElements(element)
+  ##### xml utils
+  
+  def get_element_value(element,name)
+    XPath.first(element,name).text()
+  end
+  
+  def hash_from_elements(element)
     params=Hash.new
     element.each_element do |child|
       if !child.nil? && !child.text().nil? && !child.text().empty?
@@ -188,7 +194,7 @@ module AdminHelper
   end
   
   # assumes all child elements have the same name and no attributes (e.g. refs/ref
-  def createArrayFromSimpleTextElements(element)
+  def array_from_elements(element)
     values=Array.new
     element.each_element do |child|
       if !child.nil? && !child.text().nil? && !child.text().empty?
@@ -201,9 +207,9 @@ module AdminHelper
   
   # Genbank utils
 
+  Bio::NCBI.default_email="nelsonhayes4@gmail.com"
   
-  
-  def downloadReferences(ids)
+  def download_references(ids)
     Bio::PubMed.efetch(ids).each do |entry|
       medline = Bio::MEDLINE.new(entry)
       reference = medline.reference
