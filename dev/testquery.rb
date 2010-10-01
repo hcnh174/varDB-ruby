@@ -50,14 +50,14 @@ end
 #puts filter.text
 
 
-Treetop.load 'query3'
+Treetop.load 'query4'
 
 #query = 'family="var" OR family="rif"'
 #query = 'family="var"'
 #query = '"dinner"'
 #query = '>='
 #query = 'family="var"'
-query = 'family="var" AND family="rif"'
+query = 'family="var" OR family="rif" OR family="vsg"'
 #query = 'family'
 
 #puts query
