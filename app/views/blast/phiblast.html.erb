@@ -11,7 +11,7 @@ PHI-BLAST searches protein sequences using a combination of pattern matching and
 <br/>
 
 <% content_for :onready do %>
-	var form=new Ext.ux.vardb.blast.PhiBlastForm(
+	var form=new kyoto.vardb.blast.PhiBlastForm(
 	{
 		<#if params.query?has_content>query: "${params.query?js_string}",</#if>
 		wordsize: ${params.wordsize?c},

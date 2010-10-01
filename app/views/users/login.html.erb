@@ -10,5 +10,5 @@
 </div>
 
 <% content_for :onready do %>
-	new Ext.ux.vardb.Login({renderTo: 'logindiv'<#if username??>, username: '${username?js_string}'</#if>});
+	new kyoto.vardb.Login({renderTo: 'logindiv'<#if username??>, username: '${username?js_string}'</#if>});
 <% end %>

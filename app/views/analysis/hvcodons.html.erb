@@ -49,7 +49,7 @@ ${gcvar.column}	${gcvar.gc}	${gcvar.variability}
 <div id="codonchart"></div><br/>
 
 <% content_for :onready do %>
-var variabilitycharts=new Ext.ux.vardb.VariabilityCharts(
+var variabilitycharts=new kyoto.vardb.VariabilityCharts(
 {
 	renderTo: 'variabilitycharts',
 	shannon: [<#list groups.consensus.positions as position>${position.shannonEntropy?string("0.##")}<#if position_has_next>,</#if></#list>],
@@ -57,7 +57,7 @@ var variabilitycharts=new Ext.ux.vardb.VariabilityCharts(
 	wukabat: [<#list groups.consensus.positions as position>${position.wuKabatVariabilityCoefficient?string("0.##")}<#if position_has_next>,</#if></#list>]
 });
 
-var aachart=new Ext.ux.vardb.AminoAcidUsageChart(
+var aachart=new kyoto.vardb.AminoAcidUsageChart(
 {
 	renderTo: 'aachart',
 	seriesNames: [<#list groups.aatables.tables as table>'${table.name}'<#if table_has_next>,</#if></#list>],
@@ -69,7 +69,7 @@ var aachart=new Ext.ux.vardb.AminoAcidUsageChart(
 	]
 });
 
-var codonchart=new Ext.ux.vardb.CodonUsageChart(
+var codonchart=new kyoto.vardb.CodonUsageChart(
 {
 	renderTo: 'codonchart',
 	seriesNames: [<#list groups.codontables.tables as table>'${table.name}'<#if table_has_next>,</#if></#list>],

@@ -1,0 +1,54 @@
+<%= javascript_include_tag "#{extjs_url}/adapter/ext/ext-base-debug.js" %>
+<%= javascript_include_tag "#{extjs_url}/ext-all-debug.js" %>
+
+<%= javascript_include_tag 'extensions/extjs-color-field.js' %>
+<%= javascript_include_tag 'extensions/extjs-comboboxadd.js' %>
+<%= javascript_include_tag 'extensions/extjs-fileuploadfield.js' %>
+<%= javascript_include_tag 'extensions/extjs-pagesize.js' %>
+<%= javascript_include_tag 'extensions/extjs-propertygrid2.js' %>
+<%= javascript_include_tag 'extensions/extjs-remotevalidator.js' %>
+<%= javascript_include_tag 'extensions/extjs-rowexpander.js' %>
+<%= javascript_include_tag 'extensions/extjs-safari-fix.js' %>
+<%= javascript_include_tag 'extensions/extjs-select.js' %>
+<%= javascript_include_tag 'extensions/extjs-lightbox.js' %>
+<%= javascript_include_tag 'extensions/extjs-messagewindow.js' %>
+<%= javascript_include_tag 'extensions/extjs-xcheckboxgroup.js' %>
+<%= javascript_include_tag 'extensions/extjs-formqtip.js' %>
+<%= javascript_include_tag 'extensions/extjs-gridctxmenuplugin.js' %>
+<%= javascript_include_tag 'extensions/extjs-textbox.js' %>
+<%= javascript_include_tag 'extensions/extjs-lovcombo.js' %>
+<%= javascript_include_tag 'extensions/extjs-gridprinter.js' %>
+<%= javascript_include_tag 'extensions/extjs-addcolumns.js' %>
+<%= javascript_include_tag 'extensions/extjs-multiselect.js' %>
+<%= javascript_include_tag 'extensions/extjs-itemselector.js' %>
+<%= javascript_include_tag 'extensions/livegrid-all-debug.js' %>
+<%= javascript_include_tag 'extensions/showdown.js' %>
+
+<%= javascript_include_tag 'vardb/namespace.js' %>
+<%= javascript_include_tag 'vardb/utils.js' %>
+
+<%= javascript_include_tag 'vardb/users/login.js' %>
+
+<%= javascript_include_tag 'vardb/extjs/grid.js' %>
+<%= javascript_include_tag 'vardb/extjs/selectlist.js' %>
+
+<%= javascript_include_tag 'vardb/tags/applytagdialog.js' %>
+<%= javascript_include_tag 'vardb/tags/newtagdialog.js' %>
+<%= javascript_include_tag 'vardb/tags/tagcloud.js' %>
+<%= javascript_include_tag 'vardb/tags/tags.js' %>
+
+<%= javascript_include_tag 'vardb/widgets/sortdialog.js' %>
+<%= javascript_include_tag 'vardb/widgets/selectcolumnsdialog.js' %>
+
+
+<%= javascript_include_tag 'vardb/vardb.js' %>
+
+<%= javascript_include_tag 'vardb/widgets/comment.js' %>
+<%= javascript_include_tag 'vardb/widgets/comments.js' %>
+<%= javascript_include_tag 'vardb/widgets/feedback.js' %>
+<%= javascript_include_tag 'vardb/widgets/navigation.js' %>
+<%= javascript_include_tag 'vardb/widgets/mainmenu.js' %>
+<%= javascript_include_tag 'vardb/widgets/announcements.js' %>
+<%= javascript_include_tag 'vardb/widgets/browsebycategory.js' %>
+
+<%= javascript_include_tag 'vardb/popups/termpopup.js' %>

@@ -27,8 +27,8 @@ var drugs=${drugsjson.json};
 <% end %>
 
 <% content_for :onready do %>
-	var diseasegrid=new Ext.ux.vardb.Diseases({data: diseases});
-	var druggrid=new Ext.ux.vardb.Drugs({data: drugs});
+	var diseasegrid=new kyoto.vardb.Diseases({data: diseases});
+	var druggrid=new kyoto.vardb.Drugs({data: drugs});
 
 	var tabs = new Ext.TabPanel({
 		renderTo: 'griddiv',

@@ -64,7 +64,7 @@ var codonusage=${codonusagejson.json};
 <% end %>
 
 <% content_for :onready do %>
-	var grid = new Ext.ux.vardb.SequenceGrid(
+	var grid = new kyoto.vardb.SequenceGrid(
 	{
 		renderTo: 'sequencesdiv',
 		resource: {type: 'PATHOGEN', id: ${pathogen.id?c}, identifier: '${pathogen.identifier}'},
@@ -73,12 +73,12 @@ var codonusage=${codonusagejson.json};
 	});
 	
 	var resourcesdiv='resourcesdiv';	
-	grid = new Ext.ux.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Families', data: families, resourceType: 'FAMILY'});
-	grid = new Ext.ux.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Genomes', data: genomes, resourceType: 'GENOME'});
-	grid = new Ext.ux.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Diseases', data: diseases, resourceType: 'DISEASE'});
-	grid = new Ext.ux.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Drugs', data: drugs, resourceType: 'DRUG'});
+	grid = new kyoto.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Families', data: families, resourceType: 'FAMILY'});
+	grid = new kyoto.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Genomes', data: genomes, resourceType: 'GENOME'});
+	grid = new kyoto.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Diseases', data: diseases, resourceType: 'DISEASE'});
+	grid = new kyoto.vardb.ResourceGrid({renderTo: resourcesdiv, title: 'Drugs', data: drugs, resourceType: 'DRUG'});
 	
-	var codonusagetable=new Ext.ux.vardb.CodonUsageTable(
+	var codonusagetable=new kyoto.vardb.CodonUsageTable(
 	{
 		renderTo: 'codonusagediv',
 		data: codonusage

@@ -8,6 +8,7 @@ require 'rexml/document'
 require 'rails-extjs-direct'
 
 gem 'rails', '3.0.0'
+gem 'sqlite3-ruby', :require => 'sqlite3'
 
 #nelson
 gem 'bson_ext'
@@ -18,9 +19,7 @@ gem 'rails-extjs-direct'
 gem 'devise', '~> 1.1.1'
 gem 'mm-devise', '>= 1.1.0'
 gem 'treetop' 
-
-
-#gem 'sqlite3-ruby', :require => 'sqlite3'
+#gem 'open4' # doesn't seem to work on windows
 
 # Use unicorn as the web server
 # gem 'unicorn'

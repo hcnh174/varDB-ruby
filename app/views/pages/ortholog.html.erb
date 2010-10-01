@@ -43,7 +43,7 @@ var families=
 <% end %>
 
 <% content_for :onready do %>
-	var grid = new Ext.ux.vardb.SequenceGrid(
+	var grid = new kyoto.vardb.SequenceGrid(
 	{
 		renderTo: 'sequencesdiv',
 		resource: {type: 'ORTHOLOG', id: ${ortholog.id?c}, identifier: '${ortholog.identifier}'},
@@ -51,7 +51,7 @@ var families=
 		numsequences: ${ortholog.numsequences?c},
 		pagesize: 5
 	});
-	grid = new Ext.ux.vardb.OrthologFamilies({renderTo: 'familiesdiv', data: families});
+	grid = new kyoto.vardb.OrthologFamilies({renderTo: 'familiesdiv', data: families});
 <% end %>
 
 

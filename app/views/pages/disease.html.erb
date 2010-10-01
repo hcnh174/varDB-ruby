@@ -40,8 +40,8 @@ var drugs=${drugsjson.json};
 <@vardb.comments type="DISEASE" identifier=disease.identifier/>
 
 <% content_for :onready do %>
-	var grid = new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Pathogens', data: pathogens, resourceType: 'PATHOGEN'});
-	grid = new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Drugs', data: drugs, resourceType: 'DRUG'});
+	var grid = new kyoto.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Pathogens', data: pathogens, resourceType: 'PATHOGEN'});
+	grid = new kyoto.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Drugs', data: drugs, resourceType: 'DRUG'});
 <% end %>
 
 

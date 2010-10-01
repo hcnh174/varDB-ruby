@@ -5,7 +5,7 @@
 <br/>
 
 <% content_for :onready do %>
-	var form=new Ext.ux.vardb.blast.BlastForm(
+	var form=new kyoto.vardb.blast.BlastForm(
 	{
 		<#if params.query?has_content>query: "${params.query?js_string}",</#if>
 		program: '${params.program}',

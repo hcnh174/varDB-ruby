@@ -45,7 +45,7 @@ var associated=
 <% end %>
 
 <% content_for :onready do %>
-	var sequencegrid = new Ext.ux.vardb.SequenceGrid(
+	var sequencegrid = new kyoto.vardb.SequenceGrid(
 	{
 		renderTo: 'sequencesdiv',
 		resource: {type: 'PFAM', id: ${pfam.id?c}, identifier: '${pfam.identifier}'},
@@ -54,6 +54,6 @@ var associated=
 		pagesize: 10
 	});
 	
-	var associatedgrid=new Ext.ux.vardb.AssociatedPfamGrid({renderTo: 'associateddiv', data: associated});
+	var associatedgrid=new kyoto.vardb.AssociatedPfamGrid({renderTo: 'associateddiv', data: associated});
 <% end %>
 

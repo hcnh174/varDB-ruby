@@ -9,7 +9,7 @@ PSI-BLAST searches protein sequences using...
 <br/>
 
 <% content_for :onready do %>
-	var form=new Ext.ux.vardb.blast.PsiBlastForm(
+	var form=new kyoto.vardb.blast.PsiBlastForm(
 	{	
 		<#if params.query?has_content>query: "${params.query?js_string}",</#if>
 		wordsize: ${params.wordsize?c},

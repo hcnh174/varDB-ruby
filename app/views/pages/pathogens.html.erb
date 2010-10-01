@@ -11,7 +11,7 @@ var genome_data=${genomesjson.json};
 <% end %>
 
 <% content_for :onready do %>
-	var tabs=new Ext.ux.vardb.Pathogens({renderTo: 'pathogentabs', data: pathogen_data});
-	tabs.add(new Ext.ux.vardb.Genomes({data: genome_data}));
+	var tabs=new kyoto.vardb.Pathogens({renderTo: 'pathogentabs', data: pathogen_data});
+	tabs.add(new kyoto.vardb.Genomes({data: genome_data}));
 <% end %>
 

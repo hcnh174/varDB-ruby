@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC
+	"-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title><%= yield :title %></title>
+	<link rel="shortcut icon" href="/images/favicon.ico"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />	
+	<meta name="description" content="Database of gene families involved in antigenic variation"/>	
+	<meta name="keywords" content="antigenic variation, infectious disease, genome, bioinformatics"/>
+	<!-- <meta name="robots" content="noindex,nofollow"/> -->
+	<%= stylesheet_link_tag "#{extjs_url}/resources/css/ext-all.css" %>
+	<%= stylesheet_link_tag "extensions.css" %>
+	<%= stylesheet_link_tag "global.css" %>
+	<%= csrf_meta_tag %>
+	<%= yield :head %>
+</head>
+
+<body>
+	
+<div id="doc-vardb" class="yui-t1">
+	<div id="hd">
+		<%= render 'layouts/header' %>
+	</div> 
+	<div id="bd">		
+		<div class="yui-b">
+			<div id="nav"></div>
+		</div>
+		<div id="yui-main">
+			<div class="yui-b">
+			<%= render 'layouts/breadcrumbs' %>
+			<div class="heading"><%= yield :title %></div>
+			<!-- flash message placeholders -->
+			<p class="notice"><%= notice %></p>
+			<p class="alert"><%= alert %></p>
+			<!-- -->
+			<%= yield %>
+			<br/>
+			</div>
+		</div>
+	</div>
+	<div id="ft">
+		<%= render 'layouts/footer' %>
+	</div> 
+</div>
+<!-- javascript_include_tag :defaults -->
+<%= render 'layouts/scripts' %>
+
+<script type="text/javascript">
+var navigation = <%= render 'layouts/navigation' %>;
+
+<%= yield :scripts %>
+</script>
+
+<script type="text/javascript">
+
+<!--
+Ext.onReady(function()
+{
+	kyoto.vardb.Vardb.onReady();
+	new kyoto.vardb.widgets.MainMenu({renderTo: 'mainmenudiv'});
+	new kyoto.vardb.widgets.Navigation({renderTo: 'nav', data: navigation, cur: '<%= yield :curpage %>'});
+	var commentsgrid=new kyoto.vardb.widgets.Comments({renderTo: 'commentsdiv', identifier: '<%= yield :comments %>'});
+	<%= yield :onready %>
+});
+// -->
+</script>
+
+<%= render 'layouts/analytics' %>
+</body>
+</html>

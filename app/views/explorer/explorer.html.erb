@@ -11,11 +11,11 @@ var explorer;
 	{
 		url: vardb.webapp+'/ajax/explorer.json',
 		method: 'post',
-		failure: Ext.ux.vardb.Vardb.onFailure,
+		failure: kyoto.vardb.Vardb.onFailure,
 		success: function(response, options)
 		{
 			var config=Ext.decode(response.responseText);
-			explorer=new Ext.ux.vardb.explorer.Explorer(config);
+			explorer=new kyoto.vardb.explorer.Explorer(config);
 		}
 	});
 </@vardb.onReady>

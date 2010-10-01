@@ -10,7 +10,7 @@ Perform a remote BLAST search on sequences at NCBI using netblast.
 <br/>
 
 <% content_for :onready do %>
-	var form=new Ext.ux.vardb.blast.NetBlastForm(
+	var form=new kyoto.vardb.blast.NetBlastForm(
 	{
 		<#if results??>id: '${results.id}',</#if>
 		program: '${params.program}',

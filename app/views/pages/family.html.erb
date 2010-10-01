@@ -55,15 +55,15 @@ var pfams=${pfamsjson.json};
 <% end %>
 
 <% content_for :onready do %>
-	var grid = new Ext.ux.vardb.SequenceGrid(
+	var grid = new kyoto.vardb.SequenceGrid(
 	{
 		renderTo: 'sequencesdiv',
 		resource: {type: 'FAMILY', id: ${family.id?c}, identifier: '${family.identifier}'},
 		filter: 'family=${family.identifier}'
 	});
-	grid=new Ext.ux.vardb.PfamGrid({renderTo: 'resourcegridsdiv', data: pfams, style: 'margin: 20px 0 0 0'});
-	grid = new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Sequence sets', data: sequencesets});
-	grid = new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Paralog groups', data: paralogs});
-	grid=new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Subgroups', data: subgroups, resourceType: 'SUBGROUP'});
-	grid=new Ext.ux.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Structures', data: structures, resourceType: 'STRUCTURE'});
+	grid=new kyoto.vardb.PfamGrid({renderTo: 'resourcegridsdiv', data: pfams, style: 'margin: 20px 0 0 0'});
+	grid = new kyoto.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Sequence sets', data: sequencesets});
+	grid = new kyoto.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Paralog groups', data: paralogs});
+	grid=new kyoto.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Subgroups', data: subgroups, resourceType: 'SUBGROUP'});
+	grid=new kyoto.vardb.ResourceGrid({renderTo: 'resourcegridsdiv', title: 'Structures', data: structures, resourceType: 'STRUCTURE'});
 <% end %>

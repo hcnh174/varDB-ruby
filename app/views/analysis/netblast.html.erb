@@ -12,7 +12,7 @@ Sequences can be downloaded in bulk from NCBI using the <a href="http://www.ncbi
 <div id="griddiv"></div><br/>
 
 <% content_for :onready do %>
-	var grid=new Ext.ux.vardb.blast.NetblastGrid(
+	var grid=new kyoto.vardb.blast.NetblastGrid(
 	{
 		analysis_id: '${analysis.id}',
 		renderTo: 'griddiv'

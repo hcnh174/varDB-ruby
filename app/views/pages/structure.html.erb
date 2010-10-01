@@ -44,20 +44,20 @@ var data=${structurejson.json};
 <% end %>
 
 <% content_for :onready do %>
-	jmolform=new Ext.ux.vardb.JmolForm(
+	jmolform=new kyoto.vardb.JmolForm(
 	{
 		renderTo: 'jmolformdiv',
 		data: data,
 		command: '${command}'
 	});
 	
-	var chainhitsgrid=new Ext.ux.vardb.ChainHitsGrid(
+	var chainhitsgrid=new kyoto.vardb.ChainHitsGrid(
 	{
 		renderTo: 'chainhitsdiv',
 		identifier: '${structure.identifier}'
 	});
 	
-	var grid=new Ext.ux.vardb.Chains({renderTo: 'chainsdiv', data: data});
+	var grid=new kyoto.vardb.Chains({renderTo: 'chainsdiv', data: data});
 <% end %>
 
 

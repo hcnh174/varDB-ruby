@@ -17,9 +17,9 @@ var variability=${variabilityjson.json};
 
 
 <% content_for :onready do %>
-var variabilitygrid=new Ext.ux.vardb.VariabilityGrid({renderTo: 'griddiv', data: variability});
+var variabilitygrid=new kyoto.vardb.VariabilityGrid({renderTo: 'griddiv', data: variability});
 <#--
-var variabilitycharts=new Ext.ux.vardb.VariabilityCharts(
+var variabilitycharts=new kyoto.vardb.VariabilityCharts(
 {
 	renderTo: 'variabilitycharts',
 	shannon: [<#list consensus.positions as position>${position.shannonEntropy?string("0.##")}<#if position_has_next>,</#if></#list>],

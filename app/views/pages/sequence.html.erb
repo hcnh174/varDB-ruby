@@ -72,7 +72,7 @@
 </#if>
 
 <div class="checkboxcontrols">
-<a href="#" onclick="Ext.ux.vardb.Cart.addSequenceToCart(${sequence.id?c})">
+<a href="#" onclick="kyoto.vardb.Cart.addSequenceToCart(${sequence.id?c})">
 Add to cart ${vardb.cartimage}
 </a> | 
 <a href="${vardb.webapp}/explorer.html" target="cart" rel="nofollow">View cart ${vardb.cartimage}</a>
@@ -120,13 +120,13 @@ var divid='tagdiv';
 
 function reloadTags()
 {
-	Ext.ux.vardb.Vardb.ajaxRequest('/tags/ajax/sequence.json',{sequence_id: sequence_id},function(json)
+	kyoto.vardb.Vardb.ajaxRequest('/tags/ajax/sequence.json',{sequence_id: sequence_id},function(json)
 	{
 		var list=[], index, tag;
 		for (index=0;index<json.tags.length;index++)
 		{
 			tag=json.tags[index];
-			list.push(Ext.ux.vardb.tags.Services.formatTag(tag));
+			list.push(kyoto.vardb.tags.Services.formatTag(tag));
 		}
 		Ext.DomHelper.overwrite(divid,list.join('&nbsp;'));
 	});
@@ -134,12 +134,12 @@ function reloadTags()
 
 function addTag()
 {
-	var dialog=new Ext.ux.vardb.tags.ApplyTagDialog(
+	var dialog=new kyoto.vardb.tags.ApplyTagDialog(
 	{
 		sequence_id: sequence_id,
 		callback: function(tag)
 		{
-			Ext.ux.vardb.Vardb.info('The tag has been applied to this sequence');
+			kyoto.vardb.Vardb.info('The tag has been applied to this sequence');
 			reloadTags();
 		}
 	});
@@ -167,7 +167,7 @@ function addTag()
 	</#if>	
 	<#if sequence.sequence?has_content>
 		createPanel('nucleotide_sequence','Nucleotide sequence');
-		var gcplot=new Ext.ux.vardb.GcChart({sequence: '${sequence.sequence}', title: 'GC Content', renderTo: 'gcplot'});
+		var gcplot=new kyoto.vardb.GcChart({sequence: '${sequence.sequence}', title: 'GC Content', renderTo: 'gcplot'});
 	</#if>
 	
 <% end %>
