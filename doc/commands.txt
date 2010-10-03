@@ -22,6 +22,7 @@ git config --global user.name ""
 git config --global user.email
 
 git clone git@github.com:hcnh174/varDB.git vardbruby
+git clone git@github.com:hcnh174/hdb.git hdbruby
 git add .
 git commit -m ""
 git commit -a -m ""

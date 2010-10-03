@@ -50,15 +50,16 @@ end
 #puts filter.text
 
 
-Treetop.load 'query4'
+Treetop.load 'query5'
 
 #query = 'family="var" OR family="rif"'
 #query = 'family="var"'
 #query = '"dinner"'
 #query = '>='
 #query = 'family="var"'
-query = 'family="var" OR family="rif" OR family="vsg"'
+#query = 'family="var" OR family="rif" OR family="vsg"'
 #query = 'family'
+query = 'family="var" OR family="rif"'
 
 #puts query
 parser = QueryParser.new

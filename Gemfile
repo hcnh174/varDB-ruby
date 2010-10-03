@@ -20,6 +20,10 @@ gem 'devise', '~> 1.1.1'
 gem 'mm-devise', '>= 1.1.0'
 gem 'treetop' 
 #gem 'open4' # doesn't seem to work on windows
+gem 'devise_openid_authenticatable'
+
+
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

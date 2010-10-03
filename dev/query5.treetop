@@ -1,0 +1,98 @@
+grammar Query
+
+	rule query
+		subquery {
+			def content
+				elements[0].content
+			end
+		}
+	end
+
+	rule subquery
+		leading:nestedterm andor trailing:nestedterm {
+			def content
+				filter = CompositeFilter.new
+				filter.left = leading.content
+				filter.operator = andor.text_value
+				filter.right = trailing.content
+				filter
+			end
+		}
+	end
+
+	rule nestedterm
+		(parenterm / term) {
+			def content
+				elements[0].content
+			end
+		}
+	end
+	
+	rule parenterm
+		'(' term ')' {
+			def content
+				term.content
+			end
+		}
+	end
+	
+	rule term
+		identifier operator value {		
+			def content
+				filter = ElementaryFilter.new
+				filter.field =  elements[0].text_value
+				filter.operator =  elements[1].text_value
+				filter.value =  elements[2].text_value
+				filter
+			end
+		}
+	end
+	
+	rule identifier
+		letter (letter / digit / dot)*
+	end
+	
+	rule operator
+		'=' / '!=' / '>=' / '>' / '<=' / '<'
+	end
+	
+	rule value
+  		quotedstring / string
+  	end
+  	
+  	rule quotedstring
+		'"' [^"]* '"' {
+			def text_value
+				elements[1].text_value
+			end
+		}
+	end
+	
+	rule string
+		(letter / digit / dot)+
+	end
+	
+	rule letter
+		[a-zA-Z]
+	end
+	
+	rule digit
+		[0-9]
+	end
+	
+	rule dot
+		'.'
+	end
+	
+	rule whitespace
+		[\s]+
+	end
+	
+	rule andor
+		whitespace logical:('OR' / 'or' / 'AND' / 'and') whitespace {
+			def text_value
+				logical.text_value.upcase
+			end
+		}
+	end	
+end

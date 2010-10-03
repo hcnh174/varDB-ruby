@@ -1,0 +1,9 @@
+maxUserSequences: 50
+
+searchEngines: xenu,googlebot,msnbot,webalta crawler,yahoo! slurp,baiduspider,yeti
+
+hvalign:
+	2
+	50
+	10
+	1000
