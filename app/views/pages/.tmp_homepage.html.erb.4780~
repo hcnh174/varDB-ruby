@@ -1,0 +1,249 @@
+<% content_for :title do %>varDB: Antigenic variation database<% end %>
+<% content_for :curpage do %>homepage<% end %>
+<% content_for :comments do %>page:homepage<% end %>
+
+<div class="introduction">
+Many phylogenetically diverse organisms use <a href="pages/antigenicvariation.html">antigenic variation</a> to avoid recognition by the immune system. 
+varDB was developed to serve as a centralized database of antigenically variable protein families from a range of pathogenic organisms. 
+Infectious diseases and their pathogens are often studied in isolation, but observations made in one species may be used to formulate hypotheses relevant to other taxa.
+VarDB is intended to facilitate large-scale examination of the evolution of antigenic gene families 
+and help provide insight into how a conserved function can be maintained despite extreme sequence diversity.
+</div>
+<br/>
+
+<%= render 'layouts/map' %>
+
+<div id="announcements"></div><br/>
+
+<div id="browse_by_category"></div><br/>
+
+<div class="figure" style="padding-left:0px;">
+<table width="90%">
+<tr>
+	<td><img src="/images/figure-3.png" alt="Recombination"/></td>
+	<td class="caption"><b>Non-homologous recombination.</b> The two chromosomes in <b>(A)</b> encode different polypeptides. A recombination event ocurring in the first exon allows the generation of diversity <b>(B)</b>.</td>
+</tr>
+</table>
+</div>
+<br/>
+
+<div class="subheading">Acknowledgments</div>
+<div class="introduction">
+This website was developed as part of a collaboration between 
+<a href="http://www.bic.kyoto-u.ac.jp/" target="_blank">Kyoto University</a> in Japan 
+and the <a href="http://info.ki.se/index_en.html" target="_blank">Karolinska Institute</a> in Sweden. 
+We are grateful to the <a href="http://www.stint.se/en/">STINT Foundation</a>, the Swedish Royal Academy of Sciences, the Japan Society for the Promotion of Science, and the Ministry of Education, Culture, Sports, Science and Technology of Japan for funding.
+</div>
+
+<div class="introduction">If you use varDB in your work, please cite the following publication:</div><br/>
+<div class="references">Hayes CN, Diez D, Joannin N, Honda W, Kanehisa M, Wahlgren M, Wheelock CE, Goto S. 2008. varDB: a pathogen-specific sequence database of protein families involved in antigenic variation. Bioinformatics (Oxford, England) 24:2564-5. <span class="pmid">(<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=pubmed&amp;cmd=Retrieve&amp;dopt=AbstractPlus&amp;list_uids=18776192&amp;query_hl=22&amp;itool=pubmed_docsum" target="_blank" title="PubMed">18776192</a>)</span></div>
+<br/>
+
+<br/>
+<div id="commentsdiv"></div>
+
+
+<% content_for :scripts do %>
+
+var categories = {"families":[{"identifier":"families","name":"All families"},{"identifier":
+      "anaplasma.marginale.msp2","name":
+      "Anaplasma marginale msp2 (437 sequences)"},{"identifier":
+      "anaplasma.phagocytophilum.p44","name":
+      "Anaplasma phagocytophilum p44 (381 sequences)"},{"identifier":
+      "babesia.bovis.ves1","name":"Babesia bovis ves1a (462 sequences)"},{
+      "identifier":"bordetella.pertussis.prn","name":
+      "Bordetella pertussis prn (71 sequences)"},{"identifier":
+      "borrelia.burgdorferi.vlse","name":
+      "Borrelia burgdorferi vls (156 sequences)"},{"identifier":
+      "borrelia.duttonii.vlp","name":
+      "Borrelia duttonii vlp (14 sequences)"},{"identifier":
+      "borrelia.hermsii.vlp","name":"Borrelia hermsii vlp (28 sequences)"},{
+      "identifier":"borrelia.hermsii.vsp","name":
+      "Borrelia hermsii vsp (10 sequences)"},{"identifier":
+      "echinococcus.granulosus.agb","name":
+      "Echinococcus granulosus antigen B (152 sequences)"},{"identifier":
+      "ehrlichia.canis.msp4","name":"Ehrlichia canis msp4 (81 sequences)"},{
+      "identifier":"ehrlichia.chaffeensis.omp","name":
+      "Ehrlichia chaffeensis omp (121 sequences)"},{"identifier":
+      "ehrlichia.ruminantium.map1","name":
+      "Ehrlichia ruminantium MAP1 (154 sequences)"},{"identifier":
+      "erysipelothrix.rhusiopathiae.spaa","name":
+      "Erysipelothrix rhusiopathiae spaA (16 sequences)"},{"identifier":
+      "giardia.lamblia.vsp","name":"Giardia lamblia VSP (3191 sequences)"},{
+      "identifier":"human.immunodeficiency.virus.1.env","name":
+      "HIV-1 ENV (1135 sequences)"},{"identifier":
+      "human.immunodeficiency.virus.1.gag","name":
+      "HIV-1 gag (1165 sequences)"},{"identifier":
+      "human.immunodeficiency.virus.1.nef","name":
+      "HIV-1 nef (1163 sequences)"},{"identifier":"hepatitis.c.virus.core",
+      "name":"Hepatitis C virus Core (983 sequences)"},{"identifier":
+      "hepatitis.c.virus.e2","name":"Hepatitis C virus E2 (535 sequences)"},{
+      "identifier":"hepatitis.c.virus.polyprotein","name":
+      "Hepatitis C virus Polyprotein (866 sequences)"},{"identifier":
+      "influenza.a.virus.ha","name":
+      "Influenza A virus HA (10564 sequences)"},{"identifier":
+      "influenza.a.virus.na","name":
+      "Influenza A virus NA (4810 sequences)"},{"identifier":
+      "mycobacterium.tuberculosis.pe","name":
+      "Mycobacterium tuberculosis pe (52 sequences)"},{"identifier":
+      "neisseria.gonorrhoeae.opa","name":
+      "Neisseria gonorrhoeae opa (48 sequences)"},{"identifier":
+      "neisseria.gonorrhoeae.opc","name":
+      "Neisseria gonorrhoeae opc (2 sequences)"},{"identifier":
+      "neisseria.gonorrhoeae.pilc","name":
+      "Neisseria gonorrhoeae pilC (4 sequences)"},{"identifier":
+      "neisseria.gonorrhoeae.pora","name":
+      "Neisseria gonorrhoeae porA (974 sequences)"},{"identifier":
+      "neisseria.meningitidis.opa","name":
+      "Neisseria meningitidis opa (573 sequences)"},{"identifier":
+      "neisseria.meningitidis.opc","name":
+      "Neisseria meningitidis opc (17 sequences)"},{"identifier":
+      "neisseria.meningitidis.pilc","name":
+      "Neisseria meningitidis pilC (14 sequences)"},{"identifier":
+      "neisseria.meningitidis.pile_s","name":
+      "Neisseria meningitidis pilE_S (62 sequences)"},{"identifier":
+      "neisseria.meningitidis.pora","name":
+      "Neisseria meningitidis porA (1481 sequences)"},{"identifier":
+      "paracoccidioides.brasiliensis.gp43","name":
+      "Paracoccidioides brasiliensis gp43 (252 sequences)"},{"identifier":
+      "plasmodium.berghei.bir","name":
+      "Plasmodium berghei bir (2591 sequences)"},{"identifier":
+      "plasmodium.chabaudi.cir","name":
+      "Plasmodium chabaudi cir (1613 sequences)"},{"identifier":
+      "plasmodium.falciparum.rifin_stevor","name":
+      "Plasmodium falciparum rifin_stevor (1171 sequences)"},{"identifier":
+      "plasmodium.falciparum.var","name":
+      "Plasmodium falciparum var (40026 sequences)"},{"identifier":
+      "plasmodium.knowlesi.kir","name":
+      "Plasmodium knowlesi kir (205 sequences)"},{"identifier":
+      "plasmodium.vivax.vir","name":
+      "Plasmodium vivax vir (2337 sequences)"},{"identifier":
+      "plasmodium.yoelii.yir","name":
+      "Plasmodium yoelii yir (4143 sequences)"},{"identifier":
+      "pneumocystis.carinii.msg","name":
+      "Pneumocystis carinii msg (73 sequences)"},{"identifier":
+      "pneumocystis.jirovecii.msg","name":
+      "Pneumocystis jirovecii msg (23 sequences)"},{"identifier":
+      "streptococcus.pyogenes.m","name":
+      "Streptococcus pyogenes M Protein (498 sequences)"},{"identifier":
+      "theileria.sergenti.mpsp","name":
+      "Theileria sergenti major piroplasm surface protein (18 sequences)"},{
+      "identifier":"treponema.pallidum.tpr","name":
+      "Treponema pallidum tpr (2 sequences)"},{"identifier":
+      "trypanosoma.brucei.vsg","name":
+      "Trypanosoma brucei vsg (1190 sequences)"}],"pathogens":[{"identifier":
+      "pathogens","name":"All pathogens"},{"identifier":
+      "anaplasma.marginale","name":"Anaplasma marginale (437 sequences)"},{
+      "identifier":"anaplasma.phagocytophilum","name":
+      "Anaplasma phagocytophilum (381 sequences)"},{"identifier":
+      "babesia.bovis","name":"Babesia bovis (462 sequences)"},{"identifier":
+      "bordetella.pertussis","name":"Bordetella pertussis (71 sequences)"},{
+      "identifier":"borrelia.burgdorferi","name":
+      "Borrelia burgdorferi (156 sequences)"},{"identifier":
+      "borrelia.duttonii","name":"Borrelia duttonii (14 sequences)"},{
+      "identifier":"borrelia.hermsii","name":
+      "Borrelia hermsii (38 sequences)"},{"identifier":
+      "echinococcus.granulosus","name":
+      "Echinococcus granulosus (152 sequences)"},{"identifier":
+      "ehrlichia.canis","name":"Ehrlichia canis (81 sequences)"},{
+      "identifier":"ehrlichia.chaffeensis","name":
+      "Ehrlichia chaffeensis (121 sequences)"},{"identifier":
+      "ehrlichia.ruminantium","name":
+      "Ehrlichia ruminantium (154 sequences)"},{"identifier":
+      "erysipelothrix.rhusiopathiae","name":
+      "Erysipelothrix rhusiopathiae (16 sequences)"},{"identifier":
+      "giardia.lamblia","name":"Giardia lamblia (3191 sequences)"},{
+      "identifier":"human.immunodeficiency.virus.1","name":
+      "HIV-1 (3463 sequences)"},{"identifier":"hepatitis.c.virus","name":
+      "Hepatitis C virus (2384 sequences)"},{"identifier":
+      "influenza.a.virus","name":"Influenza A virus (15374 sequences)"},{
+      "identifier":"mycobacterium.tuberculosis","name":
+      "Mycobacterium tuberculosis (52 sequences)"},{"identifier":
+      "neisseria.gonorrhoeae","name":
+      "Neisseria gonorrhoeae (1028 sequences)"},{"identifier":
+      "neisseria.meningitidis","name":
+      "Neisseria meningitidis (2147 sequences)"},{"identifier":
+      "paracoccidioides.brasiliensis","name":
+      "Paracoccidioides brasiliensis (252 sequences)"},{"identifier":
+      "plasmodium.berghei","name":"Plasmodium berghei (2591 sequences)"},{
+      "identifier":"plasmodium.chabaudi","name":
+      "Plasmodium chabaudi (1613 sequences)"},{"identifier":
+      "plasmodium.falciparum","name":
+      "Plasmodium falciparum (41197 sequences)"},{"identifier":
+      "plasmodium.knowlesi","name":"Plasmodium knowlesi (205 sequences)"},{
+      "identifier":"plasmodium.vivax","name":
+      "Plasmodium vivax (2337 sequences)"},{"identifier":
+      "plasmodium.yoelii","name":"Plasmodium yoelii (4143 sequences)"},{
+      "identifier":"pneumocystis.carinii","name":
+      "Pneumocystis carinii (73 sequences)"},{"identifier":
+      "pneumocystis.jirovecii","name":
+      "Pneumocystis jirovecii (23 sequences)"},{"identifier":
+      "streptococcus.pyogenes","name":
+      "Streptococcus pyogenes (498 sequences)"},{"identifier":
+      "theileria.sergenti","name":"Theileria sergenti (18 sequences)"},{
+      "identifier":"treponema.pallidum","name":
+      "Treponema pallidum (2 sequences)"},{"identifier":
+      "trypanosoma.brucei","name":"Trypanosoma brucei (1190 sequences)"}],
+  "diseases":[{"identifier":"diseases","name":"All diseases"},{"identifier":
+      "anaplasmosis","name":"Anaplasmosis/Erlichiosis (437 sequences)"},{
+      "identifier":"babesiosis","name":"Babesiosis (462 sequences)"},{
+      "identifier":"cowdriosis","name":"Cowdriosis (154 sequences)"},{
+      "identifier":"echinococcosis","name":
+      "Echinococcosis (152 sequences)"},{"identifier":"ehrlichiosis","name":
+      "Ehrlichiosis (583 sequences)"},{"identifier":"erysipelas","name":
+      "Erysipelas (16 sequences)"},{"identifier":"giardiasis","name":
+      "Giardiasis (3191 sequences)"},{"identifier":"gonorrhea","name":
+      "Gonorrhea (1028 sequences)"},{"identifier":"hiv","name":
+      "HIV (3463 sequences)"},{"identifier":"hepatitis","name":
+      "Hepatitis (2384 sequences)"},{"identifier":"influenza","name":
+      "Influenza (15374 sequences)"},{"identifier":"lyme_disease","name":
+      "Lyme borreliosis (156 sequences)"},{"identifier":"malaria","name":
+      "Malaria (52086 sequences)"},{"identifier":"meningococcal_disease",
+      "name":"Meningococcal Disease (2147 sequences)"},{"identifier":
+      "paracoccidioidomycosis","name":
+      "Paracoccidioidomycosis (252 sequences)"},{"identifier":"pertussis",
+      "name":"Pertussis (71 sequences)"},{"identifier":
+      "pneumocystis_pneumonia","name":
+      "Pneumocystis pneumonia (96 sequences)"},{"identifier":
+      "relapsing_fever","name":"Relapsing fever (52 sequences)"},{
+      "identifier":"streptococcal_pharyngitis","name":
+      "Streptococcal pharyngitis (498 sequences)"},{"identifier":
+      "syphilis","name":"Syphilis (2 sequences)"},{"identifier":
+      "theilerosis","name":"Theilerosis (18 sequences)"},{"identifier":
+      "trypanosomiasis","name":"Trypanosomiasis (1190 sequences)"},{
+      "identifier":"tuberculosis","name":"Tuberculosis (52 sequences)"}],
+  "statistics":{"ntsequences":83878,"aasequences":46216}}
+;
+<% end %>
+
+<% content_for :onready do %>
+
+	/*
+	var commentsgrid=new kyoto.vardb.widgets.Comments(
+	{
+		renderTo: 'commentsdiv',
+		type: 'PAGE',
+		identifier: 'homepage'
+	});
+	*/
+	
+	new kyoto.vardb.widgets.Announcements({renderTo: 'announcements'});
+	new kyoto.vardb.widgets.BrowseByCategory({renderTo: 'browse_by_category', data: categories});
+	
+	
+	Ext.Direct.addProvider(
+	{
+	    url: '/direct',
+	    type: 'remoting',
+	    actions:
+		{
+	        Direct:
+			[
+	            {name: 'test', len: 1}
+	        ]
+	    }
+	});
+	
+	Direct.test({name: "test"}); 
+<% end %>
+

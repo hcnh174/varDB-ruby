@@ -68,4 +68,8 @@ class AjaxController < ApplicationController
     puts @terms
     render({:json => { :terms => @terms, :count => @terms.count() }.to_json()})
   end
+  
+  def explorer
+    render({:json => { :bundles => [] }.to_json()})
+  end
 end

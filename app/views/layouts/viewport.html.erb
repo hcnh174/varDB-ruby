@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC
+	"-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title><%= yield :title %></title>
+<link rel="shortcut icon" href="/images/favicon.ico"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="robots" content="noindex,nofollow"/>
+<%= stylesheet_link_tag "#{extjs_url}/resources/css/ext-all.css" %>
+<%= stylesheet_link_tag "extensions.css" %>
+<%= stylesheet_link_tag "global.css" %>
+<%= csrf_meta_tag %>
+<%= yield :head %>
+</head>
+<body>
+<div id="loading">
+    <div class="loading-indicator"><img src="/images/extjs/extanim32.gif" width="32" height="32" style="margin-right:8px;float:left;vertical-align:top;"/>varDB - <a href="http://www.vardb.org">www.vardb.org</a><br /><span id="loading-msg">Loading...</span></div>
+</div>
+<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading dependencies...';</script>
+
+<%= render 'layouts/scripts' %>
+
+<script type="text/javascript">
+<%= yield :scripts %>
+</script>
+
+<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading...';</script>
+
+<script type="text/javascript">
+<!--
+Ext.onReady(function()
+{
+	kyoto.vardb.Vardb.onReady();
+	document.getElementById('loading-msg').innerHTML = 'Initializing...';
+	<%= yield :onready %>
+});
+// -->
+</script>
+</body>
+</html>

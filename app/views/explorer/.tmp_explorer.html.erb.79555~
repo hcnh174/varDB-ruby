@@ -1,14 +1,15 @@
-<% content_for :title do %>varDB Explorer<% end %>
-<% content_for :curpage do %>explorer<% end %>
+<#import "/global.ftl" as vardb>
 
-<% content_for :scripts do %>
+<@vardb.viewportlayout title="varDB Explorer">
+
+<@vardb.addScript>
 var explorer;
-<% end %>
+</@vardb.addScript>
 
-<% content_for :onready do %>
+<@vardb.onReady>
 	Ext.Ajax.request(
 	{
-		url: '/ajax/explorer.json',
+		url: vardb.webapp+'/ajax/explorer.json',
 		method: 'post',
 		failure: kyoto.vardb.Vardb.onFailure,
 		success: function(response, options)
@@ -17,5 +18,5 @@ var explorer;
 			explorer=new kyoto.vardb.explorer.Explorer(config);
 		}
 	});
-<% end %>
-
+</@vardb.onReady>
+</@vardb.viewportlayout>

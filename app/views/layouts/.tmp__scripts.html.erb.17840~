@@ -1,0 +1,53 @@
+<%= javascript_include_tag "#{extjs_url}/adapter/ext/ext-base-debug.js" %>
+<%= javascript_include_tag "#{extjs_url}/ext-all-debug.js" %>
+
+<%= javascript_include_tag 'extensions/extjs-color-field.js' %>
+<%= javascript_include_tag 'extensions/extjs-comboboxadd.js' %>
+<%= javascript_include_tag 'extensions/extjs-fileuploadfield.js' %>
+<%= javascript_include_tag 'extensions/extjs-pagesize.js' %>
+<%= javascript_include_tag 'extensions/extjs-propertygrid2.js' %>
+<%= javascript_include_tag 'extensions/extjs-remotevalidator.js' %>
+<%= javascript_include_tag 'extensions/extjs-rowexpander.js' %>
+<%= javascript_include_tag 'extensions/extjs-safari-fix.js' %>
+<%= javascript_include_tag 'extensions/extjs-select.js' %>
+<%= javascript_include_tag 'extensions/extjs-lightbox.js' %>
+<%= javascript_include_tag 'extensions/extjs-messagewindow.js' %>
+<%= javascript_include_tag 'extensions/extjs-xcheckboxgroup.js' %>
+<%= javascript_include_tag 'extensions/extjs-formqtip.js' %>
+<%= javascript_include_tag 'extensions/extjs-gridctxmenuplugin.js' %>
+<%= javascript_include_tag 'extensions/extjs-textbox.js' %>
+<%= javascript_include_tag 'extensions/extjs-lovcombo.js' %>
+<%= javascript_include_tag 'extensions/extjs-gridprinter.js' %>
+<%= javascript_include_tag 'extensions/extjs-addcolumns.js' %>
+<%= javascript_include_tag 'extensions/extjs-multiselect.js' %>
+<%= javascript_include_tag 'extensions/extjs-itemselector.js' %>
+<%= javascript_include_tag 'extensions/livegrid-all-debug.js' %>
+<%= javascript_include_tag 'extensions/showdown.js' %>
+
+<%= javascript_include_tag 'kyoto/namespace.js' %>
+<%= javascript_include_tag 'kyoto/utils.js' %>
+
+<%= javascript_include_tag 'kyoto/users/login.js' %>
+
+<%= javascript_include_tag 'kyoto/extjs/grid.js' %>
+<%= javascript_include_tag 'kyoto/extjs/selectlist.js' %>
+
+<%= javascript_include_tag 'kyoto/tags/applytagdialog.js' %>
+<%= javascript_include_tag 'kyoto/tags/newtagdialog.js' %>
+<%= javascript_include_tag 'kyoto/tags/tagcloud.js' %>
+<%= javascript_include_tag 'kyoto/tags/tags.js' %>
+
+<%= javascript_include_tag 'kyoto/widgets/sortdialog.js' %>
+<%= javascript_include_tag 'kyoto/widgets/selectcolumnsdialog.js' %>
+
+<%= javascript_include_tag 'kyoto/vardb/vardb.js' %>
+
+<%= javascript_include_tag 'kyoto/vardb/widgets/comment.js' %>
+<%= javascript_include_tag 'kyoto/vardb/widgets/comments.js' %>
+<%= javascript_include_tag 'kyoto/vardb/widgets/feedback.js' %>
+<%= javascript_include_tag 'kyoto/vardb/widgets/navigation.js' %>
+<%= javascript_include_tag 'kyoto/vardb/widgets/mainmenu.js' %>
+<%= javascript_include_tag 'kyoto/vardb/widgets/announcements.js' %>
+<%= javascript_include_tag 'kyoto/vardb/widgets/browsebycategory.js' %>
+
+<%= javascript_include_tag 'kyoto/vardb/popups/termpopup.js' %>

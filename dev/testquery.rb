@@ -50,7 +50,7 @@ end
 #puts filter.text
 
 
-Treetop.load 'query5'
+Treetop.load 'query6'
 
 #query = 'family="var" OR family="rif"'
 #query = 'family="var"'
@@ -64,11 +64,11 @@ query = 'family="var" OR family="rif"'
 #puts query
 parser = QueryParser.new
 result = parser.parse(query)
-#pp result
+pp result
 #puts dumptree(result)
 if result
   puts 'success'
-  pp result.content
+  #pp result.content
 else
   puts 'failure'
 end
