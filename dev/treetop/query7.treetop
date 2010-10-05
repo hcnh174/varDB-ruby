@@ -1,0 +1,50 @@
+grammar Query
+
+	rule query
+		(left:term right:(and term)*) <ParentNode>
+	end
+	
+	rule term
+		identifier operator value <TermNode>
+	end
+	
+	rule identifier
+		[a-zA-Z] [a-zA-Z0-9.]*
+	end
+	
+	rule operator
+		'=' / '!=' / '>=' / '>' / '<=' / '<'
+	end
+	
+	rule value
+  		quotedstring / string
+  	end
+  	
+  	rule quotedstring
+		'"' [^"]* '"' {
+			def text_value
+				elements[1].text_value
+			end
+		}
+	end
+	
+	rule string
+		[a-zA-Z0-9.]+
+	end
+
+	rule or
+		[\s]+ logical:('OR' / 'or') [\s]+ {
+			def text_value
+				logical.text_value.upcase
+			end
+		}
+	end	
+	
+	rule and
+		[\s]+ logical:('AND' / 'and') [\s]+ {
+			def text_value
+				logical.text_value.upcase
+			end
+		}
+	end	
+end
