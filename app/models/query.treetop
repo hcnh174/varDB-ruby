@@ -1,0 +1,82 @@
+grammar Query
+
+	rule expression
+		leading:term trailing:(logicalexpression*) {
+			def filters
+				if leading.terminal?
+					return leading.filters
+				else
+					filter = CompositeFilter.new
+					filter.left = leading.filters
+					trailing.elements.each do |item|
+						filter.operator = item.andor.text_value
+						filter.right = item.term.filters
+					end
+					return filter
+				end
+			end
+		}
+	end
+	
+	rule logicalexpression
+		andor:(and / or) term
+	end
+	
+	rule term
+		identifier operator value {
+			def filters
+				filter = ElementaryFilter.new
+			    filter.field =  identifier.text_value
+			    filter.operator =  operator.text_value
+			    filter.value =  value.text_value
+    			filter
+			end
+		}
+		/
+		'(' expression ')' {
+			def filters
+				expression.filters
+			end
+		}
+	end
+	
+	rule identifier
+		[a-zA-Z] [a-zA-Z0-9.]*
+	end
+	
+	rule operator
+		'=' / '!=' / '>=' / '>' / '<=' / '<'
+	end
+	
+	rule value
+  		quotedstring / string
+  	end
+  	
+  	rule quotedstring
+		'"' [^"]* '"' {
+			def text_value
+				elements[1].text_value
+			end
+		}
+	end
+	
+	rule string
+		[a-zA-Z0-9.]+
+	end
+
+	rule or
+		[\s]+ logical:('OR' / 'or') [\s]+ {
+			def text_value
+				logical.text_value.upcase
+			end
+		}
+	end	
+	
+	rule and
+		[\s]+ logical:('AND' / 'and') [\s]+ {
+			def text_value
+				logical.text_value.upcase
+			end
+		}
+	end	
+end
